@@ -71,6 +71,7 @@ class GoodSleepTime() {
     수면 패턴의 주기를 알려주는 메서드
     인자로 (나이, 더 자고 싶은 사이클)을 입력 받음.
     더자고 싶은 사이클은 선택해서 메서드 사용자가 조절해서 사용 할 것, : 1사이클 당 1시간 30분이라고 생각할 것.
+    평균적인 좋은 수면 주기는 아래에 적어놨음.
     return to type(Int) 나이에 따른 평균적인 수면 램 사이클(Default), + 더 자고 싶은 사이클
      */
     fun ageCycle(age: Int, plusSleepCycle: Int = 0): Int{
