@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6E6E6">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="314dp"
+        android:layout_height="322dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="64dp"
+        android:text="어서오세요. \n 시작하기에 앞서...\n 나이에 따라 평균 수면 시간이 달라 정보가 필요해요."
+        android:textSize="25sp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

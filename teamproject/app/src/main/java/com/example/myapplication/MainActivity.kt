@@ -20,12 +20,13 @@ class MainActivity : AppCompatActivity() {
     private fun initLayout() {
         //깰시간 정해주는 버튼
         binding.button1.setOnClickListener {
-            var intent = Intent(this, RecommendupActivity::class.java)
+            val intent = Intent(this, RecommendupActivity::class.java)
             startActivity(intent)
         }
+//        확인하기용ss
         //잘시간 벙해주는 버튼
         binding.button2.setOnClickListener {
-            var intent = Intent(this, RecommenddownActivity::class.java)
+            val intent = Intent(this, RecommenddownActivity::class.java)
             startActivity(intent)
         }
     }
