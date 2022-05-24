@@ -10,6 +10,7 @@ class InitFragment1 : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_init1, container, false)
+//       커밋확인용
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
