@@ -7,15 +7,28 @@
     android:background="#F6E6E6">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="314dp"
         android:layout_height="322dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="64dp"
-        android:text="어서오세요. \n 시작하기에 앞서...\n 나이에 따라 평균 수면 시간이 달라 정보가 필요해요."
-        android:textSize="25sp"
+        android:text="옆으로 스와이프\n하여 움직여주세요"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -7,33 +7,70 @@
     android:background="#F6E6E6">
 
 
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="주무시기까지 시간(분) 입력"
+        android:inputType="date"
+        android:textAlignment="center"
+        android:maxLength="3"
+        android:textSize="19dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintBottom_toTopOf="@id/startButton"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="323dp" />
+
     <TextView
-        android:id="@+id/title4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="51dp"
-        android:text="정보가 입력 되었어요.\n밑에 시작하기 버튼을 눌러 시작해주세요."
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="주무시기까지 얼마나 걸리나요? (평균 17분)"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/startButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editTextAge"
+        app:layout_constraintBottom_toTopOf="@id/editTextDate"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <EditText
+        android:id="@+id/editTextAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="나이 입력 칸"
+        android:inputType="date"
+        android:maxLength="3"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/title4"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="149dp" />
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="407dp"
         android:backgroundTint="#ED9F9F"
         android:text="시작하기"
         android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextDate"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="415dp" />
+
+    <TextView
+        android:id="@+id/title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나이를 아래에 적어주세요."
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editTextAge"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="42dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
