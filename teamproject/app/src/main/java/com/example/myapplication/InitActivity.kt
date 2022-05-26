@@ -1,10 +1,10 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -22,7 +22,8 @@ class InitActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInitBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        isDB()
+//        delay()
 
         initLayout()
 
@@ -34,6 +35,20 @@ class InitActivity : AppCompatActivity() {
     *
     * */
 
+    private fun isDB(){
+
+        val dbfile = getDatabasePath("dysw.db")
+        if(dbfile.exists()){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun delay(){
+        Handler(Looper.getMainLooper()).postDelayed({
+            //실행할 코드
+        }, 300000)
+    }
 
     private fun initLayout() {
 
