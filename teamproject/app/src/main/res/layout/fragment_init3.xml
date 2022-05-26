@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6E6E6">
-
+    android:background="@drawable/gradient">
 
     <TextView
-        android:id="@+id/titleaa"
-        android:layout_width="356dp"
-        android:layout_height="246dp"
-        android:layout_marginTop="80dp"
-        android:text="시작하기에 앞서서 나이 정보와 주무시기까지 시간이 얼마나 걸리는지에 대한 정보가 필요해요!"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시작하기에 앞서\n몇 가지 정보가 필요해요!"
+        android:textSize="22sp"
         android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="27dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
