@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".DayActivity">
 
 <!--화면 스크롤 가능하게 해 줌-->
@@ -11,21 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
 <!--            todolist임을 알리는 textView-->
             <TextView
                 android:id="@+id/todoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="오늘의 TODO!!"
+                android:text="오늘의 TODO-LIST!!"
+                android:layout_gravity="center"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_margin="10dp"
                 android:textSize="30sp"
+                android:textStyle="bold"
                 android:textColor="@color/black"/>
 
 <!--            todolist가 담기는 recyclerView-->
@@ -144,9 +146,9 @@
                 app:layout_constraintTop_toBottomOf="@id/analysisTable"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/ic_baseline_face_24"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
