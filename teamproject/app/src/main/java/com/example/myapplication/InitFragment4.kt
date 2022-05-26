@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.finishAffinity
 
 class InitFragment4 : Fragment() {
 
@@ -46,6 +47,7 @@ class InitFragment4 : Fragment() {
                 dbHelper.insertUserData(age.toInt(), minute.toInt())
 
                 val intent = Intent(context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
                 startActivity(intent)
             }
 
