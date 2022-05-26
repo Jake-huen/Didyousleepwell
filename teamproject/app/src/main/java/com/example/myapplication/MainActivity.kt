@@ -18,35 +18,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        isDB_create()
         initLayout()
+        isDB_create()
     }
 
 
     private fun isDB_create() {
         val dbfile = getDatabasePath("dysw.db")
-        if(!dbfile.exists()){ // DB파일이 없으면 데이터베이스 생성.
-            dbHelper = DBHelper(this, "dysw.db", null, 1)
-            getDatabasePath("dysw.db")
-            database = dbHelper.writableDatabase
-            val age = intent.getIntExtra("age", 0)
-            val minute = intent.getIntExtra("minute", 0)
-            Log.e("error",age.toString())
-            Log.e("error",minute.toString())
-
-//            TODO insert 안댐 흑흑
-//            insertUserRecord(age,minute)
+        if(!dbfile.exists()){ // DB파일이 없으면 Init 화면으로 이동.
+            val intent = Intent(this, InitActivity::class.java)
+            startActivity(intent)
         }
-    }
-
-    fun insertUserRecord(age : Int, time_fall_sleep : Int){
-
-        val sql = "INSERT INTO user (name, age) VALUES (" +
-                age + "', "+
-                time_fall_sleep + ");"
-
-        database.execSQL(sql)
-
     }
 
     private fun initLayout() {
@@ -55,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RecommendupActivity::class.java)
             startActivity(intent)
         }
-//        확인하기용ss
         //잘시간 벙해주는 버튼
         binding.button2.setOnClickListener {
             val intent = Intent(this, RecommenddownActivity::class.java)

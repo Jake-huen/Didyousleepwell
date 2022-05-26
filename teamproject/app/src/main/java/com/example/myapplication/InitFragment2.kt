@@ -8,10 +8,6 @@ import android.view.ViewGroup
 
 class InitFragment2 : Fragment() {
 
-    /*
-    * TODO -> Fragment 간 데이터 정보 전달  Fregment2 -> 3  : 나이 전달.
-    *
-    * */
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_init2, container, false)
