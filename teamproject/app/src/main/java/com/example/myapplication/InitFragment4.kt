@@ -49,7 +49,6 @@ class InitFragment4 : Fragment() {
                 startActivity(intent)
             }
 
-
         }
         return view
     }

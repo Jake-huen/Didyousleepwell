@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         //깰시간 정해주는 버튼
         binding.button1.setOnClickListener {
-            val intent = Intent(this, DateActivity::class.java)
+            val intent = Intent(this, RecommendupActivity::class.java)
             startActivity(intent)
         }
         //잘시간 벙해주는 버튼
