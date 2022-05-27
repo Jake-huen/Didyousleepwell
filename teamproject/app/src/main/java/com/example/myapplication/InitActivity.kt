@@ -60,15 +60,7 @@ class InitActivity : AppCompatActivity() {
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         val child = binding.viewPager.getChildAt(0)
         (child as? RecyclerView)?.overScrollMode = View.OVER_SCROLL_NEVER
-            Log.e("error","힝구")
 
-        binding.viewPager.setOnClickListener{
-
-            Log.e("error","힝구")
-            val index = viewpager.currentItem
-            viewpager.setCurrentItem(index+1)
-
-        }
 
     }
 
