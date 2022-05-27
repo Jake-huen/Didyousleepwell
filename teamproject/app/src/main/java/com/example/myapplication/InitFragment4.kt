@@ -42,8 +42,6 @@ class InitFragment4 : Fragment() {
             else{
                 dbHelper = DBHelper(context, "dysw.db", null, 1)
                 database = dbHelper.writableDatabase
-                Log.e("error",age.toString())
-                Log.e("error",minute.toString())
                 dbHelper.insertUserData(age.toInt(), minute.toInt())
 
                 val intent = Intent(context, MainActivity::class.java)
