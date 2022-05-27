@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodoFragment"><!--todolist임을 알리는 textView-->
+    tools:context=".TodoFragment">
     <TextView
-        android:id="@+id/todoTextView"
+        android:id="@+id/analysisTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="오늘의 잠 분석"
@@ -18,62 +18,125 @@
         android:textStyle="bold"
         android:textColor="@color/black"/>
 
-    <!--            todolist가 담기는 recyclerView-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/todoRecyclerView"
+    <TableLayout
+        android:id="@+id/analysisTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/todoTextView"
+        app:layout_constraintTop_toBottomOf="@id/analysisTextView"
+        android:padding="20dp"
         android:layout_marginTop="10dp"
-        android:padding="10dp"/>
+        >
 
-    <!--            todolist를 추가,수정,삭제할 수 있는 버튼들-->
-    <Button
-        android:id="@+id/todoAddButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/todoEditButton"
-        app:layout_constraintTop_toBottomOf="@id/todoRecyclerView"
+        <TableRow>
+            <TextView
+                android:text="기상 시간"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                />
+            <!--분석에 맞는 얼굴 표시-->
+            <TextView
+                android:text="00시 00분"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                />
+        </TableRow>
 
-        android:text="추가"/>
+        <TableRow>
+            <TextView
+                android:text="취침 시간"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                />
+            <!--            분석에 맞는 얼굴 표시-->
+            <TextView
+                android:text="00시 00분"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="수면 시간"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                />
+            <!--            분석에 맞는 얼굴 표시-->
+            <TextView
+                android:text="00시간 00분"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="적정 시간"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                />
 
-    <Button
-        android:id="@+id/todoEditButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/todoAddButton"
-        app:layout_constraintEnd_toStartOf="@id/todoDeleteButton"
-        app:layout_constraintTop_toTopOf="@id/todoAddButton"
-        android:text="수정"/>
-
-    <Button
-        android:id="@+id/todoDeleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/todoAddButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/todoEditButton"
-
-        android:text="삭제"/>
-    <!--            todolist를 추가, 수정할 수 있는 editText와 button-->
-    <!--            평상시엔 안보이게 할 것, 추가, 수정 버튼 누르면 보여짐-->
-    <EditText
-        android:id="@+id/todoEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:layout_constraintTop_toBottomOf="@id/todoAddButton"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20dp"/>
-
-    <Button
-        android:id="@+id/todoOkButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="확인"
-        app:layout_constraintBaseline_toBaselineOf="@id/todoEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
+            <TextView
+                android:text="00시간 00분"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="상        태"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                />
+            <!--분석에 맞는 얼굴 표시-->
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="2"
+                android:src="@drawable/ic_baseline_face_24"
+                android:gravity="center"
+                android:layout_margin="10dp"/>
+        </TableRow>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
