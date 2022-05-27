@@ -39,4 +39,12 @@
         app:layout_constraintStart_toEndOf="@id/button1"
         app:layout_constraintTop_toTopOf="@id/button1" />
 
+    <Button
+        android:id="@+id/gotodo"
+        android:layout_width="308dp"
+        android:layout_height="45dp"
+        android:text="확인"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="128dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

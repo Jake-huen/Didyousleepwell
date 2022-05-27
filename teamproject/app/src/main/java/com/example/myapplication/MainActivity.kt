@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
@@ -47,10 +48,16 @@ class MainActivity : AppCompatActivity() {
             setTitleFormatter(MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
             setWeekDayFormatter(ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
             setHeaderTextAppearance(R.style.CalendarWidgetHeader);
-            setOnDateLongClickListener { widget, date ->
-                val intent = Intent(this@MainActivity,DayActivity::class.java)
-                startActivity(intent)
-            }
+//            setOnDateChangedListener { widget, date, selected ->
+//
+//                val msg = "Selected date is " + date + "/" + (date.month + 1) + "/" + date.year
+//                Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+//
+//            }
+        }
+        binding.gotodo.setOnClickListener {
+            val intent = Intent(this,DayActivity::class.java)
+            startActivity(intent)
         }
 
         //깰시간 정해주는 버튼
@@ -64,4 +71,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }

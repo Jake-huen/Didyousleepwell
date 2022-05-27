@@ -6,12 +6,19 @@
         <entry key="..\:/Users/Virtual_hanbyeol/Desktop/teamproject/teamproject/app/src/main/res/layout/activity_main.xml" value="0.2898550724637681" />
         <entry key="..\:/Users/Virtual_hanbyeol/Desktop/teamproject/teamproject/app/src/main/res/layout/activity_recommenddown.xml" value="0.2898550724637681" />
         <entry key="..\:/Users/Virtual_hanbyeol/Desktop/teamproject/teamproject/app/src/main/res/layout/activity_recommenddown2.xml" value="0.2898550724637681" />
-        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_day.xml" value="0.1" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/drawable/calendar_selector.xml" value="0.1175" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/drawable/ic_icon_background.xml" value="0.1175" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/drawable/transparent_calendar_element.xml" value="0.1175" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_day.xml" value="0.33" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_init.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_recommenddown.xml" value="0.365625" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_recommenddown2.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_recommendup.xml" value="0.365625" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_recommendup2.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/calendar_selector.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/fragment_init1.xml" value="0.365625" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/fragment_init2.xml" value="0.365625" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/fragment_init3.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/fragment_init4.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/initpageview.xml" value="0.36614583333333334" />
