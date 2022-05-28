@@ -24,7 +24,7 @@
         android:textAlignment="center"
         android:gravity="center"/>
     <TimePicker
-        android:id="@+id/timePicker"
+        android:id="@+id/recommendup_timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
