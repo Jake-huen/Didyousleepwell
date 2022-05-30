@@ -107,4 +107,55 @@ class DBHelper(
 
         return list
     }
+
+
+
+    fun getAge():Int{
+        Log.e("abcd", "띠용?")
+        val list = mutableListOf<UserData>()
+        //전체조회
+        val selectAll = "select * from user"
+        //읽기전용 데이터베이스 변수
+        val rd = readableDatabase
+        //데이터를 받아 줍니다.
+        val cursor = rd.rawQuery(selectAll,null)
+
+        // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
+        // 빨간 줄이어도 무시해주도록 합시당
+        while(cursor.moveToNext()){
+            val age = cursor.getInt(cursor.getColumnIndex("age"))
+            val time_fall_sleep = cursor.getInt(cursor.getColumnIndex("time_fall_sleep"))
+
+            list.add(UserData(age, time_fall_sleep))
+        }
+        cursor.close()
+        rd.close()
+
+        return list.get(0).age
+    }
+
+
+    fun getTimeFallSleep():Int{
+        Log.e("abcd", "띠용?")
+        val list = mutableListOf<UserData>()
+        //전체조회
+        val selectAll = "select * from user"
+        //읽기전용 데이터베이스 변수
+        val rd = readableDatabase
+        //데이터를 받아 줍니다.
+        val cursor = rd.rawQuery(selectAll,null)
+
+        // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
+        // 빨간 줄이어도 무시해주도록 합시당
+        while(cursor.moveToNext()){
+            val age = cursor.getInt(cursor.getColumnIndex("age"))
+            val time_fall_sleep = cursor.getInt(cursor.getColumnIndex("time_fall_sleep"))
+
+            list.add(UserData(age, time_fall_sleep))
+        }
+        cursor.close()
+        rd.close()
+
+        return list.get(0).time_fall_sleep
+    }
 }
