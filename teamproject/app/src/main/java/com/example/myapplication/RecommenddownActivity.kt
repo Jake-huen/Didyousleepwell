@@ -27,5 +27,9 @@ class RecommenddownActivity : AppCompatActivity() {
             intent.putExtra("minute", minute)
             startActivity(intent)
         }
+        binding.buttonPrev.setOnClickListener {
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

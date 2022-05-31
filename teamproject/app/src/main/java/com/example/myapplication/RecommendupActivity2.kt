@@ -1,6 +1,7 @@
 //잘 시간을 토대로 깰 시간을 추천(RecommendupActivity에서 넘어옴)
 package com.example.myapplication
 
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,10 @@ class RecommendupActivity2 : AppCompatActivity() {
     }
 
     private fun initlayout() {
+        binding.buttonPrev.setOnClickListener {
+            var intent = Intent(this, RecommendupActivity::class.java)
+            startActivity(intent)
+        }
 
         dbHelper = DBHelper(this, "dysw.db", null, 1)
         val sleepTime = dbHelper.getTimeFallSleep()
