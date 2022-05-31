@@ -34,6 +34,18 @@
         android:layout_marginTop="50dp"
         android:theme="@style/TimePickerStyle"/>
     <Button
+        android:id="@+id/buttonPrev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이전"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/black"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="2dp" />
+    <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

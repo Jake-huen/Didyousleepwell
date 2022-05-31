@@ -1,6 +1,7 @@
 //깰 시간을 토대로 잘 시간을 추천(RecommenddownActivity에서 넘어옴)
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.databinding.ActivityRecommenddown2Binding
@@ -16,6 +17,10 @@ class RecommenddownActivity2 : AppCompatActivity() {
     }
 
     private fun initLayout() {
+        binding.buttonPrev.setOnClickListener {
+            var intent = Intent(this, RecommenddownActivity::class.java)
+            startActivity(intent)
+        }
 
         val age = dbHelper.getAge()
         //어짜피 한시간 반 고정이라 나이값은 딱히 필요없을듯..

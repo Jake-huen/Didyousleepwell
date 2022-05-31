@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodoFragment"><!--todolist임을 알리는 textView-->
+    tools:context=".TodoFragment"
+    android:background="#D5D0DD"><!--todolist임을 알리는 textView-->
     <TextView
         android:id="@+id/todoTextView"
         android:layout_width="wrap_content"
@@ -35,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/todoEditButton"
         app:layout_constraintTop_toBottomOf="@id/todoRecyclerView"
-
+        android:backgroundTint="@color/purple_200"
         android:text="추가"/>
 
     <Button
@@ -45,6 +46,7 @@
         app:layout_constraintStart_toEndOf="@id/todoAddButton"
         app:layout_constraintEnd_toStartOf="@id/todoDeleteButton"
         app:layout_constraintTop_toTopOf="@id/todoAddButton"
+        android:backgroundTint="@color/purple_200"
         android:text="수정"/>
 
     <Button
@@ -54,7 +56,7 @@
         app:layout_constraintTop_toTopOf="@id/todoAddButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/todoEditButton"
-
+        android:backgroundTint="@color/purple_200"
         android:text="삭제"/>
     <!--            todolist를 추가, 수정할 수 있는 editText와 button-->
     <!--            평상시엔 안보이게 할 것, 추가, 수정 버튼 누르면 보여짐-->
@@ -74,6 +76,7 @@
         android:text="확인"
         app:layout_constraintBaseline_toBaselineOf="@id/todoEditText"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/purple_200"
         android:layout_margin="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

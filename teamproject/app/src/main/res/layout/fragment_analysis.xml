@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodoFragment">
+    tools:context=".TodoFragment"
+    android:background="#D5D0DD">
     <TextView
         android:id="@+id/analysisTextView"
         android:layout_width="wrap_content"
@@ -37,6 +38,7 @@
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 />
             <!--분석에 맞는 얼굴 표시-->
             <TextView
@@ -60,8 +62,8 @@
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 />
-            <!--            분석에 맞는 얼굴 표시-->
             <TextView
                 android:text="00시 00분"
                 android:layout_width="0dp"
@@ -82,8 +84,8 @@
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 />
-            <!--            분석에 맞는 얼굴 표시-->
             <TextView
                 android:text="00시간 00분"
                 android:layout_width="0dp"
@@ -104,6 +106,7 @@
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 />
 
             <TextView
@@ -126,6 +129,7 @@
                 android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 />
             <!--분석에 맞는 얼굴 표시-->
             <ImageView
@@ -135,7 +139,8 @@
                 android:layout_weight="2"
                 android:src="@drawable/ic_baseline_face_24"
                 android:gravity="center"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                />
         </TableRow>
     </TableLayout>
 
