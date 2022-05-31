@@ -40,15 +40,16 @@ class MainActivity : AppCompatActivity() {
             setTitleFormatter(MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
             setWeekDayFormatter(ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
             setHeaderTextAppearance(R.style.CalendarWidgetHeader);
+            // 해당 날짜 길게 누르면 TODO_LIST로 넘어갈 수 있음
             setOnDateLongClickListener { widget, date ->
-                val intent = Intent(this@MainActivity,DayActivity::class.java)
+                val intent = Intent(this@MainActivity, DateActivity::class.java)
                 startActivity(intent)
             }
         }
 
         //깰시간 정해주는 버튼
         binding.button1.setOnClickListener {
-            val intent = Intent(this, DateActivity::class.java)
+            val intent = Intent(this, RecommendupActivity::class.java)
             startActivity(intent)
         }
         //잘시간 벙해주는 버튼

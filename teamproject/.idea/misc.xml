@@ -9,6 +9,7 @@
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/drawable/calendar_selector.xml" value="0.1175" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/drawable/ic_icon_background.xml" value="0.1175" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/drawable/transparent_calendar_element.xml" value="0.1175" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_date.xml" value="0.25936599423631124" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_day.xml" value="0.33" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_init.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
@@ -21,9 +22,10 @@
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/fragment_init2.xml" value="0.365625" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/fragment_init3.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/fragment_init4.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/fragment_todo.xml" value="0.3605128205128205" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/initpageview.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/todolist.xml" value="0.3651041666666667" />
-        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/todorow.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/tae77/Didyousleepwell/teamproject/app/src/main/res/layout/todorow.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/button_border.xml" value="0.172" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14634146341463414" />
         <entry key="app/src/main/res/layout/activity_recommenddown.xml" value="0.25" />
