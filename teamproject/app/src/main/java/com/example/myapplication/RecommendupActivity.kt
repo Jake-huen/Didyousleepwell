@@ -10,6 +10,7 @@ import com.example.myapplication.databinding.ActivityRecommendupBinding
 class RecommendupActivity : AppCompatActivity() {
     lateinit var binding: ActivityRecommendupBinding
     lateinit var timePicker: TimePicker
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRecommendupBinding.inflate(layoutInflater)
@@ -20,11 +21,15 @@ class RecommendupActivity : AppCompatActivity() {
     private fun intiLayout() {
         binding.button.setOnClickListener {
             var intent = Intent(this, RecommendupActivity2::class.java)
-            timePicker = binding.timePicker
+            timePicker = binding.recommendupTimePicker
             val hour = timePicker.hour
             val minute = timePicker.minute
             intent.putExtra("hour", hour)
             intent.putExtra("minute", minute)
+            startActivity(intent)
+        }
+        binding.buttonPrev.setOnClickListener {
+            var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 

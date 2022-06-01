@@ -4,10 +4,12 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TimePicker
 import com.example.myapplication.databinding.ActivityRecommenddownBinding
 
 class RecommenddownActivity : AppCompatActivity() {
     lateinit var binding: ActivityRecommenddownBinding
+    lateinit var timePicker : TimePicker
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRecommenddownBinding.inflate(layoutInflater)
@@ -18,6 +20,15 @@ class RecommenddownActivity : AppCompatActivity() {
     private fun initLayout() {
         binding.button.setOnClickListener {
             var intent = Intent(this, RecommenddownActivity2::class.java)
+            timePicker = binding.recommenddownTimePicker
+            val hour = timePicker.hour
+            val minute = timePicker.minute
+            intent.putExtra("hour", hour)
+            intent.putExtra("minute", minute)
+            startActivity(intent)
+        }
+        binding.buttonPrev.setOnClickListener {
+            var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
