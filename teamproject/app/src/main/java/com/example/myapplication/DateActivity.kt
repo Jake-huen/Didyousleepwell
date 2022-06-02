@@ -8,7 +8,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class DateActivity : AppCompatActivity() {
     lateinit var binding: ActivityDateBinding
     val textarr = arrayListOf<String>("투두리스트","잠 분석")
-    //val iconarr = arrayListOf<Int>(R.drawable.ic_android_black_24dp, R.drawable.ic_baseline_adb_24)
+    val iconarr = arrayListOf<Int>(R.drawable.ic_baseline_today_24, R.drawable.ic_baseline_analytics_24)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDateBinding.inflate(layoutInflater)
@@ -21,7 +21,7 @@ class DateActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tab, binding.viewpager){
                 tab, position->
             tab.text = textarr[position]
-            //tab.setIcon(iconarr[position])
+            tab.setIcon(iconarr[position])
         }.attach()
     }
 

@@ -42,6 +42,9 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
                 //text정보, view정보도 줄 생각
                 itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
             }
+            edit_button.setOnClickListener {
+
+            }
         }
     }
 

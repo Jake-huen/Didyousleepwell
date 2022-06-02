@@ -45,7 +45,7 @@ class TodoFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                // adapter.removeItem(viewHolder.adapterPosition)
+                adapter.removeItem(viewHolder.adapterPosition)
             }
         }
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
