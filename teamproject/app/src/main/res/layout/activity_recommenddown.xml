@@ -11,18 +11,18 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="깰 시간을 알려주세요"
+        android:text="언제 깨워줄까요..?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="70dp"
         android:textColor="@color/white"
-        android:background="#66000000"
         android:textSize="20sp"
         android:width="220dp"
         android:height="50dp"
         android:textAlignment="center"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textStyle="bold"/>
     <TimePicker
         android:id="@+id/recommenddown_timePicker"
         android:layout_width="wrap_content"

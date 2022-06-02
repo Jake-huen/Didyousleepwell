@@ -48,6 +48,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
     private fun initLayout() {
         binding.buttonPrev.setOnClickListener {
             var intent = Intent(this, RecommenddownActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
             startActivity(intent)
         }
 

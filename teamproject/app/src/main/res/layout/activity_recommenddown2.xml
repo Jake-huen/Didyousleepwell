@@ -11,18 +11,18 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="잘 시간을 추천할게요"
+        android:text="잘 시간을 추천해줄게요.."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="70dp"
         android:textColor="@color/white"
-        android:background="#66000000"
         android:textSize="20sp"
         android:width="220dp"
         android:height="50dp"
         android:textAlignment="center"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textStyle="bold"/>
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="wrap_content"
@@ -43,9 +43,10 @@
             android:text="1."
             app:layout_column="0"
             app:layout_row="0"
-            android:textSize="35sp"
+            android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView1"
             android:layout_width="wrap_content"
@@ -53,7 +54,7 @@
             android:text="00시00분"
             app:layout_column="1"
             app:layout_row="0"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:layout_marginStart="10dp"/>
@@ -65,10 +66,11 @@
             android:text="2."
             app:layout_column="0"
             app:layout_row="1"
-            android:textSize="35sp"
-            android:textColor="#DDDDDD"
+            android:textSize="20sp"
+            android:textColor="#E1E1E1"
             android:textAlignment="center"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView2"
             android:layout_width="wrap_content"
@@ -76,8 +78,8 @@
             android:text="00시00분"
             app:layout_column="1"
             app:layout_row="1"
-            android:textSize="35sp"
-            android:textColor="#DDDDDD"
+            android:textSize="30sp"
+            android:textColor="#E1E1E1"
             android:textAlignment="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"/>
@@ -89,10 +91,11 @@
             android:text="3."
             app:layout_column="0"
             app:layout_row="2"
-            android:textSize="35sp"
-            android:textColor="#AAAAAA"
+            android:textSize="20sp"
+            android:textColor="#BDBDBD"
             android:textAlignment="center"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView3"
             android:layout_width="wrap_content"
@@ -100,8 +103,8 @@
             android:text="00시00분"
             app:layout_column="1"
             app:layout_row="2"
-            android:textSize="35sp"
-            android:textColor="#AAAAAA"
+            android:textSize="30sp"
+            android:textColor="#BDBDBD"
             android:textAlignment="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"/>
@@ -113,10 +116,11 @@
             android:text="4."
             app:layout_column="0"
             app:layout_row="3"
-            android:textSize="35sp"
-            android:textColor="#888888"
+            android:textSize="20sp"
+            android:textColor="#989898"
             android:textAlignment="center"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView4"
             android:layout_width="wrap_content"
@@ -124,8 +128,8 @@
             android:text="00시00분"
             app:layout_column="1"
             app:layout_row="3"
-            android:textSize="35sp"
-            android:textColor="#888888"
+            android:textSize="30sp"
+            android:textColor="#989898"
             android:textAlignment="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"/>
@@ -137,10 +141,11 @@
             android:text="5."
             app:layout_column="0"
             app:layout_row="4"
-            android:textSize="35sp"
-            android:textColor="#666666"
+            android:textSize="20sp"
+            android:textColor="#787878"
             android:textAlignment="center"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView5"
             android:layout_width="wrap_content"
@@ -148,8 +153,8 @@
             android:text="00시00분"
             app:layout_column="1"
             app:layout_row="4"
-            android:textSize="35sp"
-            android:textColor="#666666"
+            android:textSize="30sp"
+            android:textColor="#787878"
             android:textAlignment="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"/>
