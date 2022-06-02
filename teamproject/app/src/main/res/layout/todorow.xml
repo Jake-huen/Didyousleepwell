@@ -4,12 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/todotextView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@color/design_default_color_secondary_variant"
-        android:padding="15dp"
-        android:text="TextView" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/checkbutton"
+            android:background="@drawable/ic_baseline_radio_button_unchecked_24"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkbox"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content" />-->
+        <TextView
+            android:id="@+id/todotextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/todo_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="수정" />
+        <Button
+            android:id="@+id/todo_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="삭제" />
+    </LinearLayout>
+
 </LinearLayout>
