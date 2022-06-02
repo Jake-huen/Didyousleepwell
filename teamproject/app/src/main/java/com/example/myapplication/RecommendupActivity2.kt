@@ -6,9 +6,11 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.example.myapplication.databinding.ActivityRecommendup2Binding
 import java.util.*
 import kotlin.properties.Delegates
@@ -32,6 +34,7 @@ class RecommendupActivity2 : AppCompatActivity() {
 
     // 시간이랑 분 인자로 넣으면 그시간에 알림이 온다. 어플 꺼놔도 오도록 설계함.
     // 필요한 *액티비티*에 가져다가 그냥 쓰면 됨.
+    @RequiresApi(Build.VERSION_CODES.M)
     fun addAlarm(){
         var alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         var intent = Intent(this, Alarm::class.java)
