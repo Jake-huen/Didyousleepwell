@@ -15,6 +15,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
     private var dbHelper = DBHelper(this, "dysw.db", null, 1)
     private var hour by Delegates.notNull<Int>()
     private var minute by Delegates.notNull<Int>()
+    lateinit var goodSleepTime:GoodSleepTime
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +54,10 @@ class RecommenddownActivity2 : AppCompatActivity() {
         val age = dbHelper.getAge()
         //어짜피 한시간 반 고정이라 나이값은 딱히 필요없을듯..
         var sleepTime = dbHelper.getTimeFallSleep()
+
+
+
+
 
         hour = intent.getIntExtra("hour", 0)
         minute = intent.getIntExtra("minute", 0)
