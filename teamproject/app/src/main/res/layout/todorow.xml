@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="@drawable/border"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/checkbutton"
+            android:id="@+id/todo_checkbutton"
             android:background="@drawable/ic_baseline_radio_button_unchecked_24"
             android:layout_gravity="center"
             android:layout_margin="10dp"
@@ -20,26 +21,38 @@
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content" />-->
         <TextView
-            android:id="@+id/todotextView"
+            android:id="@+id/todo_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:textStyle="bold"
             android:padding="15dp"
             android:text="TextView" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <Button
             android:id="@+id/todo_edit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="38dp"
+            android:background="@drawable/button_edit_delete"
             android:text="수정" />
+
         <Button
             android:id="@+id/todo_delete"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="38dp"
+            android:background="@drawable/button_edit_delete"
             android:text="삭제" />
     </LinearLayout>
+
 
 </LinearLayout>

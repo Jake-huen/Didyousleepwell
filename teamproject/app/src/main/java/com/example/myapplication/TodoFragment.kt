@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -28,10 +29,27 @@ class TodoFragment : Fragment() {
         adapter.itemClickListener = object : TodoAdapter.OnItemClickListener{
             override fun OnItemClick(data: Tododata, pos: Int) {
                 Toast.makeText(recyclerView.context,data.textString,Toast.LENGTH_SHORT).show()
+                adapter.show_edit_delete_button(pos)
             }
         }
         recyclerView.adapter = adapter
+        val simpleItemTouchCallback = object: ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                adapter.moveItem(viewHolder.adapterPosition,target.adapterPosition)
+                return true
+            }
 
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                // adapter.removeItem(viewHolder.adapterPosition)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
         return view
     }
 
@@ -53,13 +71,13 @@ class TodoFragment : Fragment() {
 
     private fun initData() {
         // DB에 저장된 값들 읽어오기
-        data.add(Tododata("씻기"))
-        data.add(Tododata("후하후하"))
-        data.add(Tododata("양치하기"))
-        data.add(Tododata("배고파"))
-        data.add(Tododata("뿌링클"))
-        data.add(Tododata("허니콤보"))
-        data.add(Tododata("돈냉"))
-        data.add(Tododata("루나코인"))
+        data.add(Tododata("씻기",false))
+        data.add(Tododata("후하후하",false))
+        data.add(Tododata("양치하기",false))
+        data.add(Tododata("배고파",false))
+        data.add(Tododata("뿌링클",false))
+        data.add(Tododata("허니콤보",false))
+        data.add(Tododata("돈냉",false))
+        data.add(Tododata("루나코인",false))
     }
 }

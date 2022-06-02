@@ -21,7 +21,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+        <EditText
+            android:text="새로운 일정을 등록하세요"
+            android:textAlignment="center"
+            android:layout_weight="5"
+            android:layout_width="0dp"
+            android:layout_margin="3dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:text="추가"
+            android:layout_margin="7dp"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <!--    <Button-->
     <!--        android:id="@+id/todoAddButton"-->
     <!--        android:layout_width="wrap_content"-->
