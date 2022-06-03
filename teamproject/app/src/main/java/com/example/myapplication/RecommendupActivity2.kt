@@ -35,11 +35,11 @@ class RecommendupActivity2 : AppCompatActivity() {
     fun addAlarm(){
         var alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         var intent = Intent(this, Alarm::class.java)
-        var pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        var pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val cal = Calendar.getInstance()
-        cal.set(Calendar.HOUR_OF_DAY, 6) // 지금 hour -> 전 액티비티 Timer에서 설정한 시간
-        cal.set(Calendar.MINUTE, 8) // 지금 hour -> 전 액티비티 Timer에서 설정한 분
+        cal.set(Calendar.HOUR_OF_DAY, hour) // 지금 hour -> 전 액티비티 Timer에서 설정한 시간
+        cal.set(Calendar.MINUTE, minute) // 지금 hour -> 전 액티비티 Timer에서 설정한 분
         cal.set(Calendar.SECOND, 0)
         cal.set(Calendar.MILLISECOND, 0);
 
@@ -59,8 +59,11 @@ class RecommendupActivity2 : AppCompatActivity() {
         val sleepTime = dbHelper.getTimeFallSleep()
         Log.d("sleeptime", sleepTime.toString())
 
-        var hour1 = intent.getIntExtra("hour", 0)
-        var minute1 = intent.getIntExtra("minute", 0) + sleepTime//평균 잠드는데 까지 걸리는 시간 더해주면 됨.
+        hour = intent.getIntExtra("hour", 0)
+        minute = intent.getIntExtra("minute", 0)
+
+        var hour1 = hour
+        var minute1 = minute
 
         while(minute1>59){
             if(minute1>59) {
