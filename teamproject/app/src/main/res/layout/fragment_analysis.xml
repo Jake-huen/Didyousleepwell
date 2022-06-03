@@ -6,12 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".TodoFragment"
     android:background="#D5D0DD">
+    <View
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/analysisTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="오늘의 잠 분석"
         android:layout_gravity="center"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"

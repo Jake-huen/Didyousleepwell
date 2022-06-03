@@ -12,6 +12,7 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
 
     interface OnItemClickListener{
         fun OnItemClick(data:Tododata,pos:Int)
+        fun onItemDelete(data:Tododata,pos:Int)
     }
     var itemClickListener:OnItemClickListener?=null
 
@@ -49,7 +50,7 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
                 itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
             }
             delete_button.setOnClickListener{
-                itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
+                itemClickListener?.onItemDelete(items[adapterPosition],adapterPosition)
             }
         }
     }

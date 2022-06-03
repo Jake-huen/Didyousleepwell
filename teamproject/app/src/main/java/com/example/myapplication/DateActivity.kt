@@ -1,7 +1,9 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import com.example.myapplication.databinding.ActivityDateBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -14,9 +16,13 @@ class DateActivity : AppCompatActivity() {
         binding = ActivityDateBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initLayout()
+
     }
 
     private fun initLayout() {
+        val secondIntent = intent
+        val date = secondIntent.getStringExtra("날짜")
+        binding.datetext.text = date
         binding.viewpager.adapter = TodoViewPagerAdapter(this)
         TabLayoutMediator(binding.tab, binding.viewpager){
                 tab, position->

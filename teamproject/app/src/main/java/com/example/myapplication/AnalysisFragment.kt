@@ -19,7 +19,6 @@ class AnalysisFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         binding = FragmentAnalysisBinding.inflate(layoutInflater, container, false)
         return binding!!.root
     }

@@ -39,8 +39,12 @@ class TodoFragment : Fragment() {
         adapter = TodoAdapter(data)
         adapter.itemClickListener = object : TodoAdapter.OnItemClickListener{
             override fun OnItemClick(data: Tododata, pos: Int) {
-                Toast.makeText(recyclerView.context,data.textString,Toast.LENGTH_SHORT).show()
+                // Toast.makeText(recyclerView.context,data.textString,Toast.LENGTH_SHORT).show()
                 adapter.show_edit_delete_button(pos)
+            }
+
+            override fun onItemDelete(data: Tododata, pos: Int) {
+                adapter.removeItem(pos)
             }
         }
         recyclerView.adapter = adapter

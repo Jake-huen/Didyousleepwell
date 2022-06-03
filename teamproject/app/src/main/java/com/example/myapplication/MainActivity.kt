@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter
+import org.threeten.bp.DayOfWeek
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -32,19 +33,21 @@ class MainActivity : AppCompatActivity() {
     private fun initLayout() {
         binding.calendar.apply {
             //처음 날짜를 월요일로 바꾸어주기
-//            state()
-//                .edit()
-//                .setFirstDayOfWeek(DayOfWeek.of(Calendar.MONDAY))
-//                .commit();
+            state()
+                .edit()
+                .setFirstDayOfWeek(DayOfWeek.MONDAY)
+                .commit();
             // 월,일 style 수정
-            setTitleFormatter(MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
-            setWeekDayFormatter(ArrayWeekDayFormatter(getResources().getTextArray(R.array.custom_weekdays)));
+            setTitleFormatter(MonthArrayTitleFormatter(resources.getTextArray(R.array.custom_months)))
+            setWeekDayFormatter(ArrayWeekDayFormatter(resources.getTextArray(R.array.custom_weekdays)))
             setHeaderTextAppearance(R.style.CalendarWidgetHeader);
             // 해당 날짜 길게 누르면 TODO_LIST로 넘어갈 수 있음
             setOnDateLongClickListener { widget, date ->
                 val intent = Intent(this@MainActivity, DateActivity::class.java)
+                intent.putExtra("날짜",date)
                 startActivity(intent)
             }
+            // addDecorators(TodayDecorator)
         }
 
         //깰시간 정해주는 버튼
