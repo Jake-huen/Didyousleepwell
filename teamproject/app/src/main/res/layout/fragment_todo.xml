@@ -29,77 +29,27 @@
             android:layout_width="0dp"
             android:layout_height="0dp"/>
         <EditText
-            android:text="새로운 일정을 등록하세요"
+            android:id="@+id/new_todo_edit"
+            android:hint="새로운 일정을 등록하세요!"
             android:textAlignment="center"
             android:layout_weight="5"
             android:layout_width="0dp"
             android:layout_margin="3dp"
             android:layout_height="match_parent"/>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/todo_add"
             android:text="추가"
+            android:backgroundTint="#AAA3A3"
             android:layout_margin="7dp"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-    <!--    <Button-->
-    <!--        android:id="@+id/todoAddButton"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="37dp"-->
-    <!--        android:layout_marginBottom="20dp"-->
-    <!--        android:backgroundTint="@color/purple_200"-->
-    <!--        android:text="추가"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/todoEditText"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/todoRecyclerView" />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/todoEditButton"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginEnd="36dp"-->
-    <!--        android:backgroundTint="@color/purple_200"-->
-    <!--        android:text="수정"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/todoDeleteButton"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/todoRecyclerView" />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/todoDeleteButton"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginEnd="37dp"-->
-    <!--        android:backgroundTint="@color/purple_200"-->
-    <!--        android:text="삭제"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/todoRecyclerView"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/todoRecyclerView" />-->
-    <!--    &lt;!&ndash;            todolist를 추가, 수정할 수 있는 editText와 button&ndash;&gt;-->
-    <!--    &lt;!&ndash;            평상시엔 안보이게 할 것, 추가, 수정 버튼 누르면 보여짐&ndash;&gt;-->
-    <!--    <EditText-->
-    <!--        android:id="@+id/todoEditText"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginBottom="158dp"-->
-    <!--        android:ems="10"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/todoAddButton"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/todoAddButton" />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/todoOkButton6"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        android:layout_marginEnd="20dp"-->
-    <!--        android:backgroundTint="@color/purple_200"-->
-    <!--        android:text="확인"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/todoDeleteButton" />-->
-
     <!--            todolist가 담기는 recyclerView-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="475dp"
+        android:layout_height="525dp"
         android:padding="10dp" />
 
 

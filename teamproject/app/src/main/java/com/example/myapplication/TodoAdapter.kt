@@ -15,6 +15,7 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
     }
     var itemClickListener:OnItemClickListener?=null
 
+    // 항목 옮길때
     fun moveItem(oldPos:Int, newPos:Int){
         val item = items[oldPos]
         items.removeAt(oldPos)
@@ -22,11 +23,13 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
         notifyItemMoved(oldPos,newPos)
     }
 
+    // 항목 swipe로 제거
     fun removeItem(pos:Int){
         items.removeAt(pos)
         notifyItemRemoved(pos)
     }
 
+    // 옆에 아이콘 클릭하면 수정, 삭제 버튼 등장
     fun show_edit_delete_button(pos:Int){
         items[pos].show_edit_delete=!items[pos].show_edit_delete
         notifyItemChanged(pos)
@@ -43,7 +46,10 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
                 itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
             }
             edit_button.setOnClickListener {
-
+                itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
+            }
+            delete_button.setOnClickListener{
+                itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
             }
         }
     }

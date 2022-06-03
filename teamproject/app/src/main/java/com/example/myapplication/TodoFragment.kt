@@ -1,20 +1,26 @@
 package com.example.myapplication
 
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 
 class TodoFragment : Fragment() {
     private var data:ArrayList<Tododata> = ArrayList()
     lateinit var adapter:TodoAdapter
     lateinit var recyclerView: RecyclerView
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,7 +28,12 @@ class TodoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_todo,container,false)
+
         recyclerView = view.findViewById(R.id.todoRecyclerView)
+        val edit_button = view.findViewById<AppCompatButton>(R.id.todo_edit)
+        val delete_button = view.findViewById<AppCompatButton>(R.id.todo_delete)
+        val add_button = view.findViewById<AppCompatButton>(R.id.todo_add)
+        val add_text = view.findViewById<EditText>(R.id.new_todo_edit)
         initData()
         recyclerView.layoutManager = LinearLayoutManager(activity)
         adapter = TodoAdapter(data)
@@ -33,6 +44,15 @@ class TodoFragment : Fragment() {
             }
         }
         recyclerView.adapter = adapter
+
+        add_button.setOnClickListener {
+            val new_todo = add_text.text.toString()
+            data.add(Tododata(new_todo,false))
+            Log.i(new_todo,"new_todo")
+            add_text.clearFocus()
+            add_text.text.clear()
+        }
+
         val simpleItemTouchCallback = object: ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.LEFT){
             override fun onMove(
@@ -48,25 +68,10 @@ class TodoFragment : Fragment() {
                 adapter.removeItem(viewHolder.adapterPosition)
             }
         }
+
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
         return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    // activity에 정보 전달해준다.
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        // 정보 수신 fragment 간에는 통신 어려우니까 activity를 통해서 통신
-//        if(activity!= null){
-//            val intent = activity?.intent
-//            if(intent!=null){
-//                val str = intent.getStringExtra("name")
-//            }
-//        }
     }
 
     private fun initData() {
