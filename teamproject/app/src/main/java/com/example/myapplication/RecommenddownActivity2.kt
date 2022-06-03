@@ -59,83 +59,42 @@ class RecommenddownActivity2 : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
             startActivity(intent)
         }
-
+        hour = intent.getIntExtra("hour", 0) //잘 시간(시)
+        minute = intent.getIntExtra("minute", 0) //잘 시간(분)
+        var cycle = 0
         val age = dbHelper.getAge()
-        Log.i("Please", "왜 안돼")
-        //어짜피 한시간 반 고정이라 나이값은 딱히 필요없을듯..
+
+        if(age in 0..1) cycle = 9
+        else if(age in 2..3) cycle = 8
+        else if(age in 4..6) cycle = 7
+        else if(age in 7..18) cycle = 6
+        else cycle = 5
+
         var sleepTime = dbHelper.getTimeFallSleep() //잠드는데 걸리는 시간
 
-        var hour = intent.getIntExtra("hour", 0) //잘 시간(시)
-        var minute = intent.getIntExtra("minute", 0) //잘 시간(분)
-        Log.i("Please", "왜 안돼")
         goodSleepTime = GoodSleepTime()
 
-        var calsleeptime = goodSleepTime.sleepTime(hour, minute,0 , 4, sleepTime)
+        var calsleeptime = goodSleepTime.sleepTime(hour, minute,0 , cycle, sleepTime)
 
         val timeString = calsleeptime.hour.toString() + "시 " + calsleeptime.minute.toString() + "분"
-        Log.i("Please", timeString)
 
-        //binding.timeTextView5.text = timeString //마지막 줄 부터 출력
+        binding.timeTextView3.text = timeString //마지막 줄 부터 출력
 
-//        var hour2 = hour-1
-//        var minute2 = minute-30
-//
-//        while(minute2<0){
-//            if(minute2<0) {
-//                hour2 -= 1
-//                minute2 += 60
-//            }
-//            if(hour2<0) {
-//                hour2 += 24
-//            }
-//        }
-//
-//        val timeString2 = hour2.toString() + "시" + minute2.toString() + "분"
-//        binding.timeTextView4.text = timeString2
-//
-//        var hour3 = hour2-1
-//        var minute3 = minute2-30
-//
-//        while(minute3<0){
-//            if(minute3<0) {
-//                hour3 -= 1
-//                minute3 += 60
-//            }
-//            if(hour3<0) {
-//                hour3 += 24
-//            }
-//        }
-//        val timeString3 = hour3.toString() + "시" + minute3.toString() + "분"
-//        binding.timeTextView3.text = timeString3
-//
-//        var hour4 = hour3-1
-//        var minute4 = minute3-30
-//
-//        while(minute4<0){
-//            if(minute4<0) {
-//                hour4 -= 1
-//                minute4 += 60
-//            }
-//            if(hour4<0) {
-//                hour4 += 24
-//            }
-//        }
-//        val timeString4 = hour4.toString() + "시" + minute4.toString() + "분"
-//        binding.timeTextView2.text = timeString4
-//
-//        var hour5 = hour4-1
-//        var minute5 = minute4-30
-//
-//        while(minute5<0){
-//            if(minute5<0) {
-//                hour5 -= 1
-//                minute5 += 60
-//            }
-//            if(hour5<0) {
-//                hour5 += 24
-//            }
-//        }
-//        val timeString5 = hour5.toString() + "시" + minute5.toString() + "분"
-//        binding.timeTextView1.text = timeString5
+        val cal1 = calsleeptime.plusMinutes(180)
+        val timeString1 = cal1.hour.toString() + "시 " + cal1.minute.toString() + "분"
+        binding.timeTextView1.text = timeString1
+
+        val cal2 = calsleeptime.plusMinutes(90)
+        val timeString2 = cal2.hour.toString() + "시 " + cal2.minute.toString() + "분"
+        binding.timeTextView2.text = timeString2
+
+        val cal4 = calsleeptime.minusMinutes(90)
+        val timeString4 = cal4.hour.toString() + "시 " + cal4.minute.toString() + "분"
+        binding.timeTextView4.text = timeString4
+
+        val cal5 = calsleeptime.minusMinutes(180)
+        val timeString5 = cal5.hour.toString() + "시 " + cal5.minute.toString() + "분"
+        binding.timeTextView5.text = timeString5
+
     }
 }

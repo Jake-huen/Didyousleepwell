@@ -18,12 +18,12 @@ import kotlin.properties.Delegates
 class RecommendupActivity2 : AppCompatActivity() {
 
     lateinit var binding: ActivityRecommendup2Binding
-    lateinit var dbHelper: DBHelper
     lateinit var database: SQLiteDatabase
     private var hour by Delegates.notNull<Int>()
     private var minute by Delegates.notNull<Int>()
-    lateinit var goodSleepTime: GoodSleepTime
+    private var dbHelper = DBHelper(this, "dysw.db", null, 1)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityRecommendup2Binding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -60,7 +60,6 @@ class RecommendupActivity2 : AppCompatActivity() {
             startActivity(intent)
         }
 
-        dbHelper = DBHelper(this, "dysw.db", null, 1)
         val sleepTime = dbHelper.getTimeFallSleep()
         Log.d("sleeptime", sleepTime.toString())
 
@@ -69,89 +68,37 @@ class RecommendupActivity2 : AppCompatActivity() {
 
         var hour1 = hour
         var minute1 = minute
+        var cycle = 0
 
-        goodSleepTime = GoodSleepTime()
-        val calwakeuptime = goodSleepTime.wakeTime(hour1, minute1, 0, 5, sleepTime)
-//
-//        val timeString = calwakeuptime.hour.toString() + "시 " + calwakeuptime.minute.toString() + "분"
-//        Log.i("Please", timeString)
+        val age = dbHelper.getAge()
+        if(age in 0..1) cycle = 9
+        else if(age in 2..3) cycle = 8
+        else if(age in 4..6) cycle = 7
+        else if(age in 7..18) cycle = 6
+        else cycle = 5
+
+        val goodSleepTime = GoodSleepTime()
+        val calwakeuptime = goodSleepTime.wakeTime(hour1, minute1, 0, cycle, sleepTime)
 
 
+        val timeString3 = calwakeuptime.hour.toString() + "시 " + calwakeuptime.minute.toString() + "분"
+        binding.timeTextView3.text = timeString3 //사이클에 합당한 시간
 
-//        while(minute1>59){
-//            if(minute1>59) {
-//                hour1 += 1
-//                minute1 -= 60
-//            }
-//            if(hour1>23) {
-//                hour1 -= 24
-//            }
-//        }
-//
-//
-//        val timeString = hour1.toString() + "시 " + 1.toString() + "분"
-//
-//        binding.timeTextView1.text = timeString
-//
-//        var hour2 = hour1+1
-//        var minute2 = minute1+30
-//
-//        while(minute2>59){
-//            if(minute2>59) {
-//                hour2 += 1
-//                minute2 -= 60
-//            }
-//            if(hour2>23) {
-//                hour2 -= 24
-//            }
-//        }
-//        val timeString2 = hour2.toString() + "시" + minute2.toString() + "분"
-//        binding.timeTextView2.text = timeString2
-//
-//        var hour3 = hour2+1
-//        var minute3 = minute2+30
-//
-//        while(minute3>59){
-//            if(minute3>59) {
-//                hour3 += 1
-//                minute3 -= 60
-//            }
-//            if(hour3>23) {
-//                hour3 -= 24
-//            }
-//        }
-//        val timeString3 = hour3.toString() + "시" + minute3.toString() + "분"
-//        binding.timeTextView3.text = timeString3
-//
-//        var hour4 = hour3+1
-//        var minute4 = minute3+30
-//
-//        while(minute4>59){
-//            if(minute4>59) {
-//                hour4 += 1
-//                minute4 -= 60
-//            }
-//            if(hour4>23) {
-//                hour4 -= 24
-//            }
-//        }
-//        val timeString4 = hour4.toString() + "시" + minute4.toString() + "분"
-//        binding.timeTextView4.text = timeString4
-//
-//        var hour5 = hour4+1
-//        var minute5 = minute4+30
-//
-//        while(minute5>59){
-//            if(minute5>59) {
-//                hour5 += 1
-//                minute5 -= 60
-//            }
-//            if(hour5>23) {
-//                hour5 -= 24
-//            }
-//        }
-//        val timeString5 = hour5.toString() + "시" + minute5.toString() + "분"
-//        binding.timeTextView5.text = timeString5
+        val cal1 = calwakeuptime.plusMinutes(180)
+        val timeString1 = cal1.hour.toString() + "시 " + cal1.minute.toString() + "분"
+        binding.timeTextView1.text = timeString1
+
+        val cal2 = calwakeuptime.plusMinutes(90)
+        val timeString2 = cal2.hour.toString() + "시 " + cal2.minute.toString() + "분"
+        binding.timeTextView2.text = timeString2
+
+        val cal4 = calwakeuptime.minusMinutes(90)
+        val timeString4 = cal4.hour.toString() + "시 " + cal4.minute.toString() + "분"
+        binding.timeTextView4.text = timeString4
+
+        val cal5 = calwakeuptime.minusMinutes(180)
+        val timeString5 = cal5.hour.toString() + "시 " + cal5.minute.toString() + "분"
+        binding.timeTextView5.text = timeString5
 
     }
 
