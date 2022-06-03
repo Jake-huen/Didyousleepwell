@@ -22,6 +22,7 @@ class RecommendupActivity2 : AppCompatActivity() {
     lateinit var database: SQLiteDatabase
     private var hour by Delegates.notNull<Int>()
     private var minute by Delegates.notNull<Int>()
+    lateinit var goodSleepTime: GoodSleepTime
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityRecommendup2Binding.inflate(layoutInflater)
@@ -50,6 +51,7 @@ class RecommendupActivity2 : AppCompatActivity() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun initlayout() {
         binding.buttonPrev.bringToFront()
         binding.buttonPrev.setOnClickListener {
@@ -65,80 +67,88 @@ class RecommendupActivity2 : AppCompatActivity() {
         var hour1 = intent.getIntExtra("hour", 0)
         var minute1 = intent.getIntExtra("minute", 0) + sleepTime//평균 잠드는데 까지 걸리는 시간 더해주면 됨.
 
-        while(minute1>59){
-            if(minute1>59) {
-                hour1 += 1
-                minute1 -= 60
-            }
-            if(hour1>23) {
-                hour1 -= 24
-            }
-        }
+        goodSleepTime = GoodSleepTime()
+        val calwakeuptime = goodSleepTime.wakeTime(hour1, minute1, 0, 5, sleepTime)
+//
+//        val timeString = calwakeuptime.hour.toString() + "시 " + calwakeuptime.minute.toString() + "분"
+//        Log.i("Please", timeString)
 
 
-        val timeString = hour1.toString() + "시 " + 1.toString() + "분"
 
-        binding.timeTextView1.text = timeString
-
-        var hour2 = hour1+1
-        var minute2 = minute1+30
-
-        while(minute2>59){
-            if(minute2>59) {
-                hour2 += 1
-                minute2 -= 60
-            }
-            if(hour2>23) {
-                hour2 -= 24
-            }
-        }
-        val timeString2 = hour2.toString() + "시" + minute2.toString() + "분"
-        binding.timeTextView2.text = timeString2
-
-        var hour3 = hour2+1
-        var minute3 = minute2+30
-
-        while(minute3>59){
-            if(minute3>59) {
-                hour3 += 1
-                minute3 -= 60
-            }
-            if(hour3>23) {
-                hour3 -= 24
-            }
-        }
-        val timeString3 = hour3.toString() + "시" + minute3.toString() + "분"
-        binding.timeTextView3.text = timeString3
-
-        var hour4 = hour3+1
-        var minute4 = minute3+30
-
-        while(minute4>59){
-            if(minute4>59) {
-                hour4 += 1
-                minute4 -= 60
-            }
-            if(hour4>23) {
-                hour4 -= 24
-            }
-        }
-        val timeString4 = hour4.toString() + "시" + minute4.toString() + "분"
-        binding.timeTextView4.text = timeString4
-
-        var hour5 = hour4+1
-        var minute5 = minute4+30
-
-        while(minute5>59){
-            if(minute5>59) {
-                hour5 += 1
-                minute5 -= 60
-            }
-            if(hour5>23) {
-                hour5 -= 24
-            }
-        }
-        val timeString5 = hour5.toString() + "시" + minute5.toString() + "분"
-        binding.timeTextView5.text = timeString5
+//        while(minute1>59){
+//            if(minute1>59) {
+//                hour1 += 1
+//                minute1 -= 60
+//            }
+//            if(hour1>23) {
+//                hour1 -= 24
+//            }
+//        }
+//
+//
+//        val timeString = hour1.toString() + "시 " + 1.toString() + "분"
+//
+//        binding.timeTextView1.text = timeString
+//
+//        var hour2 = hour1+1
+//        var minute2 = minute1+30
+//
+//        while(minute2>59){
+//            if(minute2>59) {
+//                hour2 += 1
+//                minute2 -= 60
+//            }
+//            if(hour2>23) {
+//                hour2 -= 24
+//            }
+//        }
+//        val timeString2 = hour2.toString() + "시" + minute2.toString() + "분"
+//        binding.timeTextView2.text = timeString2
+//
+//        var hour3 = hour2+1
+//        var minute3 = minute2+30
+//
+//        while(minute3>59){
+//            if(minute3>59) {
+//                hour3 += 1
+//                minute3 -= 60
+//            }
+//            if(hour3>23) {
+//                hour3 -= 24
+//            }
+//        }
+//        val timeString3 = hour3.toString() + "시" + minute3.toString() + "분"
+//        binding.timeTextView3.text = timeString3
+//
+//        var hour4 = hour3+1
+//        var minute4 = minute3+30
+//
+//        while(minute4>59){
+//            if(minute4>59) {
+//                hour4 += 1
+//                minute4 -= 60
+//            }
+//            if(hour4>23) {
+//                hour4 -= 24
+//            }
+//        }
+//        val timeString4 = hour4.toString() + "시" + minute4.toString() + "분"
+//        binding.timeTextView4.text = timeString4
+//
+//        var hour5 = hour4+1
+//        var minute5 = minute4+30
+//
+//        while(minute5>59){
+//            if(minute5>59) {
+//                hour5 += 1
+//                minute5 -= 60
+//            }
+//            if(hour5>23) {
+//                hour5 -= 24
+//            }
+//        }
+//        val timeString5 = hour5.toString() + "시" + minute5.toString() + "분"
+//        binding.timeTextView5.text = timeString5
 
     }
 

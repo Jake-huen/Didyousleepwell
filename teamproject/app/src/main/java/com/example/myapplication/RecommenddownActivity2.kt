@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.myapplication.databinding.ActivityRecommenddown2Binding
 import java.util.*
@@ -58,17 +59,21 @@ class RecommenddownActivity2 : AppCompatActivity() {
         }
 
         val age = dbHelper.getAge()
+        Log.i("Please", "왜 안돼")
         //어짜피 한시간 반 고정이라 나이값은 딱히 필요없을듯..
         var sleepTime = dbHelper.getTimeFallSleep() //잠드는데 걸리는 시간
 
-        var hour1 = intent.getIntExtra("hour", 0) //잘 시간(시)
-        var minute1 = intent.getIntExtra("minute", 0) //잘 시간(분)
+        var hour = intent.getIntExtra("hour", 0) //잘 시간(시)
+        var minute = intent.getIntExtra("minute", 0) //잘 시간(분)
+        Log.i("Please", "왜 안돼")
+        goodSleepTime = GoodSleepTime()
 
-        var calsleeptime = goodSleepTime.sleepTime(hour1, minute1,0 , 4, sleepTime)
+        var calsleeptime = goodSleepTime.sleepTime(hour, minute,0 , 4, sleepTime)
 
         val timeString = calsleeptime.hour.toString() + "시 " + calsleeptime.minute.toString() + "분"
+        Log.i("Please", timeString)
 
-        binding.timeTextView5.text = timeString //마지막 줄 부터 출력
+        //binding.timeTextView5.text = timeString //마지막 줄 부터 출력
 
 //        var hour2 = hour-1
 //        var minute2 = minute-30
