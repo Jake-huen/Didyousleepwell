@@ -39,7 +39,7 @@ class Alarm: BroadcastReceiver(){
             MyApplication.ApplicationContext(),
             0,
             intentTodolist,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
 
         val notification = Notification.Builder(MyApplication.ApplicationContext(), CHANNEL_ID)

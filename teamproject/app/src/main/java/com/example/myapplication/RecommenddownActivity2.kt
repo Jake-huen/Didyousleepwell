@@ -12,6 +12,8 @@ import androidx.annotation.RequiresApi
 import com.example.myapplication.databinding.ActivityRecommenddown2Binding
 import java.util.*
 import kotlin.properties.Delegates
+import android.app.PendingIntent
+
 
 class RecommenddownActivity2 : AppCompatActivity() {
     lateinit var binding : ActivityRecommenddown2Binding
@@ -38,7 +40,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
     fun addAlarm(){
         var alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         var intent = Intent(this, Alarm::class.java)
-        var pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        var pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val cal = Calendar.getInstance()
         cal.set(Calendar.HOUR_OF_DAY, hour) // 지금 hour -> 전 액티비티 Timer에서 설정한 시간
