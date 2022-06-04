@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +19,13 @@ class TodoFragment : Fragment() {
     private var data:ArrayList<Tododata> = ArrayList()
     lateinit var adapter:TodoAdapter
     lateinit var recyclerView: RecyclerView
+    private lateinit var date: String
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // 캘린더에서 데이트 값 가져옴      ex) date 값은 2022-6-1
+        date = (context as DateActivity).getDate()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +34,7 @@ class TodoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_todo,container,false)
+
 
         recyclerView = view.findViewById(R.id.todoRecyclerView)
         val add_button = view.findViewById<AppCompatButton>(R.id.todo_add)
@@ -83,7 +92,10 @@ class TodoFragment : Fragment() {
     }
 
     private fun initData() {
+        val dbHelper = DBHelper(context, "dysw.db", null, 1)
+
         // DB에 저장된 값들 읽어오기
+        Log.e("timeto", date)
         data.add(Tododata("씻기",false))
         data.add(Tododata("후하후하",false))
         data.add(Tododata("양치하기",false))
