@@ -22,6 +22,7 @@
         android:height="50dp"
         android:textAlignment="center"
         android:gravity="center"
+        android:fontFamily="@font/ef_diary"
         android:textStyle="bold"/>
     <TimePicker
         android:id="@+id/recommenddown_timePicker"
@@ -45,5 +46,6 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/black"
         app:strokeColor="#FFFFFF"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"
+        android:fontFamily="@font/ef_diary"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
