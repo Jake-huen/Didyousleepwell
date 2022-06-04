@@ -2,7 +2,6 @@ package com.example.myapplication
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,9 +64,8 @@ class TodoFragment : Fragment() {
         // edittext에 적은 할일을 추가해주는 버튼
         add_button.setOnClickListener {
             val new_todo = add_text.text.toString()
-            dataList.add(Tododata(0, new_todo,false))
-            // Log.i(new_todo,"new_todo")
             dbHelper.insertTodoData(date, Tododata(0, new_todo,false))
+            initData()
             add_text.clearFocus()
             add_text.text.clear()
             adapter.notifyItemChange()
@@ -96,10 +94,9 @@ class TodoFragment : Fragment() {
 
     private fun initData() {
         val dbHelper = DBHelper(context, "dysw.db", null, 1)
-
         // TodoList
+        dataList.clear()
         val list = dbHelper.selectTodo(date)
-
         for(i in list.indices){
             dataList.add(Tododata(list[i].id, list[i].textString, false))
         }
