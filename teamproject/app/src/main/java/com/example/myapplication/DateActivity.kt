@@ -22,7 +22,6 @@ class DateActivity : AppCompatActivity() {
     private fun initLayout() {
         val secondIntent = intent
         val date = secondIntent.getStringExtra("날짜")
-        binding.datetext.text = date
         binding.viewpager.adapter = TodoViewPagerAdapter(this)
         TabLayoutMediator(binding.tab, binding.viewpager){
                 tab, position->

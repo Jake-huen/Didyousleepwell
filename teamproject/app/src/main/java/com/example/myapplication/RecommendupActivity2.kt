@@ -53,12 +53,6 @@ class RecommendupActivity2 : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initlayout() {
-        binding.buttonPrev.bringToFront()
-        binding.buttonPrev.setOnClickListener {
-            var intent = Intent(this, RecommendupActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
-            startActivity(intent)
-        }
 
         val sleepTime = dbHelper.getTimeFallSleep()
         Log.d("sleeptime", sleepTime.toString())

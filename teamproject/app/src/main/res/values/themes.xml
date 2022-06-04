@@ -38,7 +38,7 @@
 
     <!-- 여기서 요일, 달력 안 숫자들의 폰트 설정을 수행할 수 있다 -->
     <style name="CalenderViewCustom" parent="Theme.AppCompat">
-        <item name="colorAccent">@android:color/holo_red_light</item>
+        <item name="colorAccent">#B9CB8DFF</item>
         <item name="colorPrimary">@android:color/holo_blue_light</item>
         <item name="android:textStyle">bold</item>
     </style>
