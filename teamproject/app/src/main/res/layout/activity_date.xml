@@ -7,12 +7,6 @@
     tools:context=".DateActivity"
     >
 
-    <TextView
-        android:id="@+id/datetext"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#AC97CD"
-        android:text="오늘 날짜 넣고 싶은데.. 왜 안들어감?" />
     <androidx.viewpager2.widget.ViewPager2
         android:layout_marginTop="100dp"
         android:id="@+id/viewpager"

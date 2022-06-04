@@ -30,6 +30,7 @@ class DateActivity : AppCompatActivity() {
 
     private fun initLayout() {
 
+
         val date = intent.getStringExtra("날짜")
         datea = date.toString();
 
