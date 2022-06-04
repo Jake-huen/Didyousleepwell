@@ -38,10 +38,12 @@ class MainActivity : AppCompatActivity() {
                 .edit()
                 .setFirstDayOfWeek(DayOfWeek.MONDAY)
                 .commit();
+
             // 월,일 style 수정
             setTitleFormatter(MonthArrayTitleFormatter(resources.getTextArray(R.array.custom_months)))
             setWeekDayFormatter(ArrayWeekDayFormatter(resources.getTextArray(R.array.custom_weekdays)))
             setHeaderTextAppearance(R.style.CalendarWidgetHeader);
+
             // 해당 날짜 길게 누르면 TODO_LIST로 넘어갈 수 있음
             setOnDateLongClickListener { widget, date ->
                 val intent = Intent(this@MainActivity, DateActivity::class.java)
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("날짜", calenderDate)
                 startActivity(intent)
             }
-            // addDecorators(TodayDecorator)
+            addDecorator(TodayDecorator())
         }
 
         //깰시간 정해주는 버튼
