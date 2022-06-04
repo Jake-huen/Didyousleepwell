@@ -16,9 +16,9 @@ class DBHelper(
     override fun onCreate(db: SQLiteDatabase) {
         // sleep_time 테이블 생성
         val sql: String = "CREATE TABLE if not exists sleep_time(" +
-                "id integer primary key autoincrement," +
-                "recommend_time datetime," +
-                "recommend_flag Integer);"
+                "date string," +
+                "down string," +
+                "up string);"
         db.execSQL(sql)
         // user 테이블 생성
         val sql2: String = "CREATE TABLE if not exists user(" +
