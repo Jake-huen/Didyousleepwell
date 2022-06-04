@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class TodoFragment : Fragment() {
-    private var data:ArrayList<Tododata> = ArrayList()
+    private var dataList:ArrayList<Tododata> = ArrayList()
     lateinit var adapter:TodoAdapter
     lateinit var recyclerView: RecyclerView
     private lateinit var date: String
@@ -43,7 +43,7 @@ class TodoFragment : Fragment() {
         val database = dbHelper.writableDatabase
         initData()
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = TodoAdapter(data)
+        adapter = TodoAdapter(dataList)
         adapter.itemClickListener = object : TodoAdapter.OnItemClickListener{
             override fun OnItemClick(data: Tododata, pos: Int) {
                 // Toast.makeText(recyclerView.context,data.textString,Toast.LENGTH_SHORT).show()
@@ -51,7 +51,9 @@ class TodoFragment : Fragment() {
             }
 
             override fun onItemDelete(data: Tododata, pos: Int) {
+                dbHelper.deleteTodo(dataList[pos].id.toString())
                 adapter.removeItem(pos)
+
             }
 
             override fun OnItemEdit(data: Tododata, pos: Int) {
@@ -63,11 +65,12 @@ class TodoFragment : Fragment() {
         // edittext에 적은 할일을 추가해주는 버튼
         add_button.setOnClickListener {
             val new_todo = add_text.text.toString()
-            data.add(Tododata(new_todo,false))
+            dataList.add(Tododata(0, new_todo,false))
             // Log.i(new_todo,"new_todo")
-            // dbHelper.insertTodoData(new_todo.toString())
+            dbHelper.insertTodoData(date, Tododata(0, new_todo,false))
             add_text.clearFocus()
             add_text.text.clear()
+            adapter.notifyItemChange()
         }
 
         val simpleItemTouchCallback = object: ItemTouchHelper.SimpleCallback(
@@ -94,15 +97,12 @@ class TodoFragment : Fragment() {
     private fun initData() {
         val dbHelper = DBHelper(context, "dysw.db", null, 1)
 
-        // DB에 저장된 값들 읽어오기
-        Log.e("timeto", date)
-        data.add(Tododata("씻기",false))
-        data.add(Tododata("후하후하",false))
-        data.add(Tododata("양치하기",false))
-        data.add(Tododata("배고파",false))
-        data.add(Tododata("뿌링클",false))
-        data.add(Tododata("허니콤보",false))
-        data.add(Tododata("돈냉",false))
-        data.add(Tododata("루나코인",false))
+        // TodoList
+        val list = dbHelper.selectTodo(date)
+
+        for(i in list.indices){
+            dataList.add(Tododata(list[i].id, list[i].textString, false))
+        }
+
     }
 }

@@ -36,6 +36,10 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
         items[pos].show_edit_delete=!items[pos].show_edit_delete
         notifyItemChanged(pos)
     }
+
+    fun notifyItemChange(){
+        notifyItemChanged(0)
+    }
     fun editItem(pos:Int){
 
     }
