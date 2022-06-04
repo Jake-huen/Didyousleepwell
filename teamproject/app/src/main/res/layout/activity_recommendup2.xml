@@ -11,14 +11,13 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="깰 시간을 추천해줄게요.."
+        android:text="일어날 시간을 추천해줄게요 :)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="70dp"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:width="220dp"
         android:height="50dp"
         android:textAlignment="center"
         android:gravity="center"
@@ -33,6 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
         android:orientation="vertical"
+        android:gravity="end"
         >
 
         <TextView
