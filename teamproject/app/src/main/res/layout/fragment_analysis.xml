@@ -45,8 +45,8 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/ef_diary"
                 />
-            <!--분석에 맞는 얼굴 표시-->
             <TextView
+                android:id="@+id/textView1"
                 android:text="00시 00분"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -71,6 +71,7 @@
                 android:fontFamily="@font/ef_diary"
                 />
             <TextView
+                android:id="@+id/textView2"
                 android:text="00시 00분"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -94,6 +95,7 @@
                 android:fontFamily="@font/ef_diary"
                 />
             <TextView
+                android:id="@+id/textView3"
                 android:text="00시간 00분"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -118,6 +120,7 @@
                 />
 
             <TextView
+                android:id="@+id/textView4"
                 android:text="00시간 00분"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
