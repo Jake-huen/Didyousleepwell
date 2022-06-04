@@ -24,7 +24,8 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:padding="15dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:fontFamily="@font/ef_diary"/>
     </LinearLayout>
 
     <LinearLayout
@@ -43,7 +44,8 @@
             android:textColor="#ffffff"
             android:backgroundTint="#979494"
             android:background="@drawable/button_edit_delete"
-            android:text="수정" />
+            android:text="수정"
+            android:fontFamily="@font/ef_diary"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_delete"
@@ -52,7 +54,8 @@
             android:textColor="#ffffff"
             android:backgroundTint="#E41C1C"
             android:background="@drawable/button_edit_delete"
-            android:text="삭제" />
+            android:text="삭제"
+            android:fontFamily="@font/ef_diary"/>
     </LinearLayout>
 
 

@@ -34,8 +34,6 @@ class DateActivity : AppCompatActivity() {
         val date = intent.getStringExtra("날짜")
         datea = date.toString();
 
-        binding.datetext.text = date
-
         binding.viewpager.adapter = TodoViewPagerAdapter(this)
         TabLayoutMediator(binding.tab, binding.viewpager){
                 tab, position->

@@ -22,6 +22,7 @@
         android:height="50dp"
         android:textAlignment="center"
         android:gravity="center"
+        android:fontFamily="@font/ef_diary"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -41,7 +42,8 @@
             android:text="00시00분"
             android:textSize="30sp"
             android:textColor="#787878"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:fontFamily="@font/ef_diary"/>
 
         <TextView
             android:id="@+id/timeTextView2"
@@ -50,7 +52,8 @@
             android:text="00시00분"
             android:textSize="30sp"
             android:textColor="#D8D8D8"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:fontFamily="@font/ef_diary"/>
 
         <TextView
             android:id="@+id/timeTextView3"
@@ -59,7 +62,8 @@
             android:text="00시00분"
             android:textSize="30sp"
             android:textColor="#FFFFFF"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:fontFamily="@font/ef_diary"/>
 
         <TextView
             android:id="@+id/timeTextView4"
@@ -68,7 +72,8 @@
             android:text="00시00분"
             android:textSize="30sp"
             android:textColor="#D8D8D8"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:fontFamily="@font/ef_diary"/>
 
         <TextView
             android:id="@+id/timeTextView5"
@@ -77,7 +82,8 @@
             android:text="00시00분"
             android:textSize="30sp"
             android:textColor="#787878"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:fontFamily="@font/ef_diary"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

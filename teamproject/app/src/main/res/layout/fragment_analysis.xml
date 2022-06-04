@@ -21,8 +21,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:fontFamily="@font/ef_diary"/>
 
     <TableLayout
         android:id="@+id/analysisTable"
@@ -42,8 +42,8 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
             <!--분석에 맞는 얼굴 표시-->
             <TextView
@@ -54,6 +54,7 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/ef_diary"
                 />
         </TableRow>
 
@@ -66,8 +67,8 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
             <TextView
                 android:text="00시 00분"
@@ -77,6 +78,7 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/ef_diary"
                 />
         </TableRow>
         <TableRow>
@@ -88,8 +90,8 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
             <TextView
                 android:text="00시간 00분"
@@ -99,6 +101,7 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/ef_diary"
                 />
         </TableRow>
         <TableRow>
@@ -110,8 +113,8 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
 
             <TextView
@@ -122,19 +125,20 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/ef_diary"
                 />
         </TableRow>
         <TableRow>
             <TextView
-                android:text="상        태"
+                android:text="상      태"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
             <!--분석에 맞는 얼굴 표시-->
             <ImageView

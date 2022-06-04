@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecommendupActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:fontFamily="@font/ef_diary">
 
     <TextView
         android:id="@+id/textView"
@@ -22,6 +23,7 @@
         android:height="50dp"
         android:textAlignment="center"
         android:gravity="center"
+        android:fontFamily="@font/ef_diary"
         android:textStyle="bold"/>
     <TimePicker
         android:id="@+id/recommendup_timePicker"
@@ -45,7 +47,8 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/black"
         app:strokeColor="#FFFFFF"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"
+        android:fontFamily="@font/ef_diary"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
