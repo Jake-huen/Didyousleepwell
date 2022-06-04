@@ -18,7 +18,8 @@
         app:layout_constraintTop_toBottomOf="@id/btn_permission"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:fontFamily="@font/ef_diary"/>
 
     <Button
         android:id="@+id/btn_permission"
@@ -28,7 +29,8 @@
         app:layout_constraintBottom_toTopOf="@id/titleaa"
         android:text="권한 허용"
         tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="238dp" />
+        tools:layout_editor_absoluteY="238dp"
+        android:fontFamily="@font/ef_diary"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

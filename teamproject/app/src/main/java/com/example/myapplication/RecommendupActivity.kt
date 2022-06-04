@@ -28,11 +28,7 @@ class RecommendupActivity : AppCompatActivity() {
             intent.putExtra("minute", minute)
             startActivity(intent)
         }
-        binding.buttonPrev.setOnClickListener {
-            var intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
-            startActivity(intent)
-        }
+
 
 
 

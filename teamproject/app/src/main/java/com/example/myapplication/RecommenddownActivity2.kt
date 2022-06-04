@@ -54,11 +54,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initLayout() {
-        binding.buttonPrev.setOnClickListener {
-            var intent = Intent(this, RecommenddownActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
-            startActivity(intent)
-        }
+
         hour = intent.getIntExtra("hour", 0) //잘 시간(시)
         minute = intent.getIntExtra("minute", 0) //잘 시간(분)
         var cycle = 0
@@ -76,25 +72,34 @@ class RecommenddownActivity2 : AppCompatActivity() {
 
         var calsleeptime = goodSleepTime.sleepTime(hour, minute,0 , cycle, sleepTime)
 
-        val timeString = calsleeptime.hour.toString() + "시 " + calsleeptime.minute.toString() + "분"
+        val timeString = getTime(calsleeptime.hour) + "시 " + getTime(calsleeptime.minute) + "분"
 
         binding.timeTextView3.text = timeString //마지막 줄 부터 출력
 
         val cal1 = calsleeptime.plusMinutes(180)
-        val timeString1 = cal1.hour.toString() + "시 " + cal1.minute.toString() + "분"
+        val timeString1 = getTime(cal1.hour) + "시 " + getTime(cal1.minute) + "분"
         binding.timeTextView1.text = timeString1
 
         val cal2 = calsleeptime.plusMinutes(90)
-        val timeString2 = cal2.hour.toString() + "시 " + cal2.minute.toString() + "분"
+        val timeString2 = getTime(cal2.hour) + "시 " + getTime(cal2.minute) + "분"
         binding.timeTextView2.text = timeString2
 
         val cal4 = calsleeptime.minusMinutes(90)
-        val timeString4 = cal4.hour.toString() + "시 " + cal4.minute.toString() + "분"
+        val timeString4 = getTime(cal4.hour) + "시 " + getTime(cal4.minute) + "분"
         binding.timeTextView4.text = timeString4
 
         val cal5 = calsleeptime.minusMinutes(180)
-        val timeString5 = cal5.hour.toString() + "시 " + cal5.minute.toString() + "분"
+        val timeString5 = getTime(cal5.hour) + "시 " + getTime(cal5.minute) + "분"
         binding.timeTextView5.text = timeString5
 
     }
+    fun getTime(num:Int):String{
+        if(num>=0 && num<10){
+            return "0"+ num.toString();
+        }
+        else{
+            return num.toString();
+        }
+    }
+
 }

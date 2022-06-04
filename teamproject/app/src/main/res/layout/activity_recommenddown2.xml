@@ -11,165 +11,79 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="잘 시간을 추천해줄게요.."
+        android:text="잘 시간을 추천해줄게요 :)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="70dp"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:width="220dp"
         android:height="50dp"
         android:textAlignment="center"
         android:gravity="center"
+        android:fontFamily="@font/ef_diary"
         android:textStyle="bold"/>
 
-    <androidx.gridlayout.widget.GridLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/textView"
-        app:columnCount="2"
-        app:rowCount="5"
-        app:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:gravity="end"
         >
 
-        <TextView
-            android:id="@+id/numTextView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1."
-            app:layout_column="0"
-            app:layout_row="0"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
-            android:textAlignment="center"
-            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00시00분"
-            app:layout_column="1"
-            app:layout_row="0"
             android:textSize="30sp"
-            android:textColor="#FFFFFF"
+            android:textColor="#787878"
             android:textAlignment="center"
-            android:layout_marginStart="10dp"/>
+            android:fontFamily="@font/ef_diary"/>
 
-        <TextView
-            android:id="@+id/numTextView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2."
-            app:layout_column="0"
-            app:layout_row="1"
-            android:textSize="20sp"
-            android:textColor="#E1E1E1"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00시00분"
-            app:layout_column="1"
-            app:layout_row="1"
             android:textSize="30sp"
-            android:textColor="#E1E1E1"
+            android:textColor="#D8D8D8"
             android:textAlignment="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"/>
+            android:fontFamily="@font/ef_diary"/>
 
-        <TextView
-            android:id="@+id/numTextView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3."
-            app:layout_column="0"
-            app:layout_row="2"
-            android:textSize="20sp"
-            android:textColor="#BDBDBD"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00시00분"
-            app:layout_column="1"
-            app:layout_row="2"
             android:textSize="30sp"
-            android:textColor="#BDBDBD"
+            android:textColor="#FFFFFF"
             android:textAlignment="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"/>
+            android:fontFamily="@font/ef_diary"/>
 
-        <TextView
-            android:id="@+id/numTextView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4."
-            app:layout_column="0"
-            app:layout_row="3"
-            android:textSize="20sp"
-            android:textColor="#989898"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00시00분"
-            app:layout_column="1"
-            app:layout_row="3"
             android:textSize="30sp"
-            android:textColor="#989898"
+            android:textColor="#D8D8D8"
             android:textAlignment="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"/>
+            android:fontFamily="@font/ef_diary"/>
 
-        <TextView
-            android:id="@+id/numTextView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5."
-            app:layout_column="0"
-            app:layout_row="4"
-            android:textSize="20sp"
-            android:textColor="#787878"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            app:layout_gravity="center"/>
         <TextView
             android:id="@+id/timeTextView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00시00분"
-            app:layout_column="1"
-            app:layout_row="4"
             android:textSize="30sp"
             android:textColor="#787878"
             android:textAlignment="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"/>
-    </androidx.gridlayout.widget.GridLayout>
-    <Button
-        android:id="@+id/buttonPrev"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이전"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
-        android:backgroundTint="@color/black"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="2dp" />
+            android:fontFamily="@font/ef_diary"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,20 +24,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/purple_200"
-        android:text="깰 시간 정하기"
+        android:backgroundTint="#A863FF"
+        android:text="깰 시간 추천"
         app:layout_constraintEnd_toStartOf="@id/button2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calendar" />
+        app:layout_constraintTop_toBottomOf="@id/calendar"
+        android:fontFamily="@font/ef_diary"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_200"
-        android:text="잘 시간 정하기"
+        android:backgroundTint="#A863FF"
+        android:text="잘 시간 추천"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/button1"
-        app:layout_constraintTop_toTopOf="@id/button1" />
+        app:layout_constraintTop_toTopOf="@id/button1"
+        android:fontFamily="@font/ef_diary"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

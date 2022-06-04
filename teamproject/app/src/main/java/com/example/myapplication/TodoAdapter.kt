@@ -12,6 +12,8 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
 
     interface OnItemClickListener{
         fun OnItemClick(data:Tododata,pos:Int)
+        fun onItemDelete(data:Tododata,pos:Int)
+        fun OnItemEdit(data:Tododata,pos:Int)
     }
     var itemClickListener:OnItemClickListener?=null
 
@@ -35,6 +37,12 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
         notifyItemChanged(pos)
     }
 
+    fun notifyItemChange(){
+        notifyItemChanged(0)
+    }
+    fun editItem(pos:Int){
+
+    }
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textView = itemView.findViewById<TextView>(R.id.todo_textView)
         val checkbutton = itemView.findViewById<ImageView>(R.id.todo_checkbutton)
@@ -46,10 +54,10 @@ class TodoAdapter(val items:ArrayList<Tododata>) : RecyclerView.Adapter<TodoAdap
                 itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
             }
             edit_button.setOnClickListener {
-                itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
+                itemClickListener?.OnItemEdit(items[adapterPosition],adapterPosition)
             }
             delete_button.setOnClickListener{
-                itemClickListener?.OnItemClick(items[adapterPosition],adapterPosition)
+                itemClickListener?.onItemDelete(items[adapterPosition],adapterPosition)
             }
         }
     }

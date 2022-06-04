@@ -1,3 +1,3 @@
 package com.example.myapplication
 
-data class DataSleepTime(var id:Int, var recommendTime:String, var recommend_flag:Int)
+data class DataSleepTime(var date:String, var down:String, var up:String)

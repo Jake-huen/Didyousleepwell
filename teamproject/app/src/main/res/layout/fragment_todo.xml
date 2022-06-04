@@ -17,10 +17,10 @@
         android:text="오늘의 TODO-LIST!!"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/ef_diary"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -35,7 +35,8 @@
             android:layout_weight="5"
             android:layout_width="0dp"
             android:layout_margin="3dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:fontFamily="@font/ef_diary"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_add"
             android:text="추가"
@@ -43,13 +44,14 @@
             android:layout_margin="7dp"
             android:layout_weight="2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ef_diary"/>
     </LinearLayout>
     <!--            todolist가 담기는 recyclerView-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="525dp"
+        android:layout_height="match_parent"
         android:padding="10dp" />
 
 

@@ -13,6 +13,7 @@ class AnalysisFragment : Fragment() {
     val imglist = arrayListOf<Int>(R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five)
     //적정 시간 - 수면 시간의 절댓값으로 수면 등급 나누는 변수
     val check=5
+    private var dbHelper = DBHelper(getActivity(), "dysw.db", null, 1)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +28,11 @@ class AnalysisFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //상태 체크해서 이미지 띄우고, 각 이미지 별로 평가 한줄~
+
+        val up = dbHelper.getup()
+        val down = dbHelper.getdown()
+        binding!!.textView1.text = down
+        binding!!.textView2.text = up
         when(check){
             1->{
                 binding!!.imageView4.setImageResource(imglist[0])
