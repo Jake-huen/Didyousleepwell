@@ -1,14 +1,11 @@
 package com.example.myapplication
 
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
@@ -21,6 +18,7 @@ class TodoFragment : Fragment() {
     private var data:ArrayList<Tododata> = ArrayList()
     lateinit var adapter:TodoAdapter
     lateinit var recyclerView: RecyclerView
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,10 +28,10 @@ class TodoFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_todo,container,false)
 
         recyclerView = view.findViewById(R.id.todoRecyclerView)
-        val edit_button = view.findViewById<AppCompatButton>(R.id.todo_edit)
-        val delete_button = view.findViewById<AppCompatButton>(R.id.todo_delete)
         val add_button = view.findViewById<AppCompatButton>(R.id.todo_add)
         val add_text = view.findViewById<EditText>(R.id.new_todo_edit)
+        val dbHelper = DBHelper(context, "dysw.db", null, 1)
+        val database = dbHelper.writableDatabase
         initData()
         recyclerView.layoutManager = LinearLayoutManager(activity)
         adapter = TodoAdapter(data)
@@ -46,13 +44,19 @@ class TodoFragment : Fragment() {
             override fun onItemDelete(data: Tododata, pos: Int) {
                 adapter.removeItem(pos)
             }
+
+            override fun OnItemEdit(data: Tododata, pos: Int) {
+                TODO("Not yet implemented")
+            }
         }
         recyclerView.adapter = adapter
 
+        // edittext에 적은 할일을 추가해주는 버튼
         add_button.setOnClickListener {
             val new_todo = add_text.text.toString()
             data.add(Tododata(new_todo,false))
-            Log.i(new_todo,"new_todo")
+            // Log.i(new_todo,"new_todo")
+            // dbHelper.insertTodoData(new_todo.toString())
             add_text.clearFocus()
             add_text.text.clear()
         }

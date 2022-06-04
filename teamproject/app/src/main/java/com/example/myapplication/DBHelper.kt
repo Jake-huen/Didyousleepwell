@@ -12,35 +12,32 @@ class DBHelper(
     factory: SQLiteDatabase.CursorFactory?,
     version: Int
 ): SQLiteOpenHelper(context, name, factory, version){
-
-
     //데이터베이스가 만들어 지지않은 상태에서만 작동. 이미 만들어져 있는 상태라면 실행X
     override fun onCreate(db: SQLiteDatabase) {
-
         // sleep_time 테이블 생성
         val sql: String = "CREATE TABLE if not exists sleep_time(" +
                 "id integer primary key autoincrement," +
                 "recommend_time datetime," +
                 "recommend_flag Integer);"
-
         db.execSQL(sql)
         // user 테이블 생성
         val sql2: String = "CREATE TABLE if not exists user(" +
                 "age integer," +
                 "time_fall_sleep integer);"
-
         db.execSQL(sql2)
-
+        // 그 날짜의 todo_list 생성
+         val sql3:String = "CREATE TABLE if not exists todo(" +
+                 "date string," +
+                 "todo string);"
+        db.execSQL(sql3)
     }
-
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         val sql: String = "DROP TABLE if exists sleep_time"
         db.execSQL(sql)
+        val sql2 = "DROP TABLE if exists todo"
+        db.execSQL(sql2)
         onCreate(db)
     }
-
-
-
     /*
     insert SleepTIme Data 메소드
     DataSleepTime 객체를 주시면 Insert 됩니다.
@@ -77,6 +74,15 @@ class DBHelper(
         val wd = writableDatabase
         wd.insert("user",null,values)
         //사용이 끝나면 반드시 close()를 사용하여 메모리누수 가 되지않도록 합시다.
+        wd.close()
+    }
+
+    fun insertTodoData(todo:Tododata){
+        val values = ContentValues()
+        values.put("date","2022-06-04")
+        values.put("todo",todo.textString)
+        val wd = writableDatabase
+        wd.insert("todo",null,values)
         wd.close()
     }
 
