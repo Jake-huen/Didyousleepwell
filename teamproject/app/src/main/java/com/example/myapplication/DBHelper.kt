@@ -27,6 +27,7 @@ class DBHelper(
         db.execSQL(sql2)
         // 그 날짜의 todo_list 생성
          val sql3:String = "CREATE TABLE if not exists todo(" +
+                 "id integer primary key autoincrement," +
                  "date string," +
                  "todo string);"
         db.execSQL(sql3)
@@ -77,9 +78,9 @@ class DBHelper(
         wd.close()
     }
 
-    fun insertTodoData(todo:Tododata){
+    fun insertTodoData(date:String, todo:Tododata){
         val values = ContentValues()
-        values.put("date","2022-06-04")
+        values.put("date",date)
         values.put("todo",todo.textString)
         val wd = writableDatabase
         wd.insert("todo",null,values)
@@ -115,9 +116,35 @@ class DBHelper(
     }
 
 
+    //select 메소드 밑에는 사용법.
+//    val list = dbHelper.selectSleepTime()
+//    Log.e("error", list.get(0).recommendTime)
+    fun selectTodo(date: String):MutableList<Tododata>{
+        val list = mutableListOf<Tododata>()
+        //전체조회
+        val selectAll = "select * from todo where date " + "=" + "'" + date + "';"
+        //읽기전용 데이터베이스 변수
+        val rd = readableDatabase
+        //데이터를 받아 줍니다.
+        val cursor = rd.rawQuery(selectAll,null)
+
+        // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
+        // 빨간 줄이어도 무시해주도록 합시당
+        while(cursor.moveToNext()){
+             val id = cursor.getInt(cursor.getColumnIndex("id"))
+             val todo1 = cursor.getString(cursor.getColumnIndex("todo"))
+
+            list.add(Tododata(id, todo1, false))
+        }
+        cursor.close()
+        rd.close()
+
+        return list
+    }
+
+
 
     fun getAge():Int{
-        Log.e("abcd", "띠용?")
         val list = mutableListOf<UserData>()
         //전체조회
         val selectAll = "select * from user"
@@ -142,7 +169,6 @@ class DBHelper(
 
 
     fun getTimeFallSleep():Int{
-        Log.e("abcd", "띠용?")
         val list = mutableListOf<UserData>()
         //전체조회
         val selectAll = "select * from user"
@@ -163,5 +189,16 @@ class DBHelper(
         rd.close()
 
         return list.get(0).time_fall_sleep
+    }
+
+    fun deleteTodo(id: String) {
+
+        val deleteTodo = "Delete from todo where id " + "=" + id + ";"
+        //읽기전용 데이터베이스 변수
+        val wd = writableDatabase
+        //데이터를 받아 줍니다.
+        wd.execSQL(deleteTodo)
+        wd.close()
+
     }
 }
