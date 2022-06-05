@@ -30,6 +30,7 @@
             android:name=".RecommendupActivity"
             android:exported="false" />
 
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -41,7 +42,7 @@
         </activity>
 
         <receiver android:name=".Alarm"/>
-        <receiver android:name=".Alarm2"/>
+
 
     </application>
 

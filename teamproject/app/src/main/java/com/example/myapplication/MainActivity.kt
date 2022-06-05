@@ -81,5 +81,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RecommenddownActivity::class.java)
             startActivity(intent)
         }
+
+        binding.mainSettingIv.setOnClickListener {
+            val intent = Intent(this, SettingActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

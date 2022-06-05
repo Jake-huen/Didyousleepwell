@@ -112,6 +112,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
         minute = intent.getIntExtra("minute", 0) //일어날 시간(분)
         var cycle = 0
         val age = dbHelper.getAge()
+        Log.d("user", age.toString())
 
         if(age in 0..1) cycle = 9
         else if(age in 2..3) cycle = 8
