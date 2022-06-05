@@ -41,7 +41,7 @@
         </activity>
 
         <receiver android:name=".Alarm"/>
-
+        <receiver android:name=".Alarm2"/>
 
     </application>
 
