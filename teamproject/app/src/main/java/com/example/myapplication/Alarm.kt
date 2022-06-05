@@ -31,8 +31,8 @@ class Alarm: BroadcastReceiver(){
     private fun displayNotification() {
         val notificationId = 45
 
-        // 현재는 TodoList가 완성되지 않아서 MainActivity로 이동.
-        val intentTodolist = Intent(MyApplication.ApplicationContext(), MainActivity::class.java).apply {
+        // Local 날짜의 TodoList 로 이동. ex) 오늘은 2022-06-05일 (오전 12시 11분) -> 2022-06-05 TodoList 이동
+        val intentTodolist = Intent(MyApplication.ApplicationContext(), DateActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(
