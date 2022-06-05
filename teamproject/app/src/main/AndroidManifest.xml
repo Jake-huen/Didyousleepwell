@@ -30,6 +30,10 @@
             android:name=".RecommendupActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false"/>
+
 
         <activity
             android:name=".MainActivity"
