@@ -79,6 +79,22 @@ class DBHelper(
         wd.close()
     }
 
+//    fun updateUserData(age: Int, minute: Int){
+//        val wd = writableDatabase
+//        var query = "UPDATE user SET age = $age AND time_fall_sleep = $minute"
+//        val cursor = wd.rawQuery(query, null)
+//        val values = ContentValues()
+//        wd.update("user", values, "$age =?", )
+//    }
+
+    fun updateUserData(age:Int, minute:Int) {
+        var wd: SQLiteDatabase = writableDatabase
+        wd.execSQL(
+            "UPDATE user SET age = $age,time_fall_sleep = $minute"
+        )
+        wd.close()
+    }
+
     fun insertTodoData(date:String, todo:Tododata){
         val values = ContentValues()
         values.put("date",date)
@@ -87,6 +103,7 @@ class DBHelper(
         wd.insert("todo",null,values)
         wd.close()
     }
+
 
 
     //select 메소드 밑에는 사용법.

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/Setting_Linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나이"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="20dp"/>
+
+        <EditText
+            android:id="@+id/Setting_agechange_et"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="변경할 나이"
+            android:layout_weight="1"
+            android:layout_margin="20dp"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/Setting_agechange"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="변경"-->
+<!--            android:layout_margin="20dp"/>-->
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/Setting_Linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Setting_Linear1"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="잠에 드는 시간"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="20dp"/>
+
+        <EditText
+            android:id="@+id/Setting_sleeptimechange_et"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="변경할 시간"
+            android:layout_weight="1"
+            android:layout_margin="20dp"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/Setting_sleeptimechange"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:text="변경"/>-->
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/Setting_Linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Setting_Linear2"
+        android:gravity="center"
+        android:layout_margin="50dp">
+
+
+        <Button
+            android:id="@+id/Setting_update_btn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="변경"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
