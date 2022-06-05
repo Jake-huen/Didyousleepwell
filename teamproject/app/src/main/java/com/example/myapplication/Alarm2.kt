@@ -9,10 +9,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
 
-class Alarm: BroadcastReceiver(){
+class Alarm2: BroadcastReceiver(){
 
-    private val CHANNEL_ID = "testChannel01"   // Channel for notification
+    private val CHANNEL_ID = "testChannel02"   // Channel for notification
     private var notificationManager: NotificationManager? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -20,7 +21,7 @@ class Alarm: BroadcastReceiver(){
         if(intent != null){
 //            Toast.makeText(context, "알람", Toast.LENGTH_SHORT).show();    // AVD 확인용
 //            Log.e("Alarm","알람입니다.");    // 로그 확인용
-            createNotificationChannel(CHANNEL_ID, "mainChannel", "main channel에서 알람 사용")
+            createNotificationChannel(CHANNEL_ID, "mainChannel2", "main channel2에서 알람 사용")
             displayNotification()
 
         }
@@ -29,7 +30,7 @@ class Alarm: BroadcastReceiver(){
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun displayNotification() {
-        val notificationId = 45
+        val notificationId = 46
 
         // Local 날짜의 TodoList 로 이동. ex) 오늘은 2022-06-05일 (오전 12시 11분) -> 2022-06-05 TodoList 이동
         val intentTodolist = Intent(MyApplication.ApplicationContext(), DateActivity::class.java).apply {
@@ -45,7 +46,7 @@ class Alarm: BroadcastReceiver(){
         val notification = Notification.Builder(MyApplication.ApplicationContext(), CHANNEL_ID)
             .setSmallIcon(R.drawable.one) // 노티 아이콘
             .setContentTitle("알람") // 노티 제목
-            .setContentText("누르면 오늘 할 일 안내로 이동!") // 노티 내용
+            .setContentText("주무셔야 할 시간입니다.") // 노티 내용
             .setAutoCancel(true) // 알림을 탭하면 자동으로 알림삭제
             .setContentIntent(pendingIntent) // 노티 클릭시 인텐트 작업
             .build()

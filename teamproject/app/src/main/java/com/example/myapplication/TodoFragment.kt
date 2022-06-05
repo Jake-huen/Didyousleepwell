@@ -2,7 +2,6 @@ package com.example.myapplication
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class TodoFragment : Fragment() {
@@ -23,8 +24,14 @@ class TodoFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        // 캘린더에서 데이트 값 가져옴      ex) date 값은 2022-6-1
+        // 캘린더에서 데이트 값 가져옴      ex) date 값은 2022-06-01
         date = (context as DateActivity).getDate()
+        if(date == "null"){
+//            date = LocalDate.now().toS
+            var now = LocalDate.now()
+            date = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        }
+
     }
 
     override fun onCreateView(
@@ -34,8 +41,6 @@ class TodoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_todo,container,false)
-
-
         recyclerView = view.findViewById(R.id.todoRecyclerView)
         val add_button = view.findViewById<AppCompatButton>(R.id.todo_add)
         val add_text = view.findViewById<EditText>(R.id.new_todo_edit)
@@ -65,9 +70,8 @@ class TodoFragment : Fragment() {
         // edittext에 적은 할일을 추가해주는 버튼
         add_button.setOnClickListener {
             val new_todo = add_text.text.toString()
-            dataList.add(Tododata(0, new_todo,false))
-            // Log.i(new_todo,"new_todo")
             dbHelper.insertTodoData(date, Tododata(0, new_todo,false))
+            initData()
             add_text.clearFocus()
             add_text.text.clear()
             adapter.notifyItemChange()
@@ -96,10 +100,9 @@ class TodoFragment : Fragment() {
 
     private fun initData() {
         val dbHelper = DBHelper(context, "dysw.db", null, 1)
-
         // TodoList
+        dataList.clear()
         val list = dbHelper.selectTodo(date)
-
         for(i in list.indices){
             dataList.add(Tododata(list[i].id, list[i].textString, false))
         }

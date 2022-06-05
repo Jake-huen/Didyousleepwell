@@ -10,6 +10,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.myapplication.databinding.ActivityRecommendup2Binding
 import java.util.*
@@ -29,25 +31,75 @@ class RecommendupActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initlayout()
-        addAlarm() // 현재 인자로 들어가는 hour, minute는 전 액티비티에서 알람 설정해놓은 시간,분
+        addAlarmDown(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
+        alarmBtnSet() // 자야 할 시간에 주무십시오 알람을 준다.
     }
 
 
     // 시간이랑 분 인자로 넣으면 그시간에 알림이 온다. 어플 꺼놔도 오도록 설계함.
     // 필요한 *액티비티*에 가져다가 그냥 쓰면 됨.
     @RequiresApi(Build.VERSION_CODES.M)
-    fun addAlarm(){
+    fun addAlarmUp(hour: Int, minute: Int){
         var alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         var intent = Intent(this, Alarm::class.java)
         var pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val cal = Calendar.getInstance()
-        cal.set(Calendar.HOUR_OF_DAY, hour) // 지금 hour -> 전 액티비티 Timer에서 설정한 시간
-        cal.set(Calendar.MINUTE, minute) // 지금 hour -> 전 액티비티 Timer에서 설정한 분
-        cal.set(Calendar.SECOND, 0)
-        cal.set(Calendar.MILLISECOND, 0);
 
+        cal.set(Calendar.HOUR_OF_DAY, hour) // hour 인자 설정
+        cal.set(Calendar.MINUTE, minute) // minute 인자 설정
+        cal.set(Calendar.SECOND, 0)
+        cal.set(Calendar.MILLISECOND, 0)
+
+        Toast.makeText(this, hour.toString() + " 시 " + minute.toString() + " 분 "+ "알림이 추가되었습니다.", Toast.LENGTH_SHORT).show()
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pIntent)
+    }
+
+
+    fun addAlarmDown(hour: Int, minute: Int){
+        var alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        var intent = Intent(this, Alarm2::class.java)
+        var pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        val cal = Calendar.getInstance()
+
+        cal.set(Calendar.HOUR_OF_DAY, hour) // hour 인자 설정
+        cal.set(Calendar.MINUTE, minute) // minute 인자 설정
+        cal.set(Calendar.SECOND, 0)
+        cal.set(Calendar.MILLISECOND, 0)
+
+        Toast.makeText(this, hour.toString() + " 시 " + minute.toString() + " 분 "+ "에 자야 한다고 알려드릴게요.", Toast.LENGTH_SHORT).show()
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pIntent)
+    }
+
+    // 버튼 누르면 그 시간에 맞춰진 알람이 추가됨.
+    private fun alarmBtnSet(){
+
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+
+        binding.apply {
+            timeTextView1.setOnClickListener {
+                addAlarmUp(splitHour(timeTextView1), splitMinute(timeTextView1))
+                startActivity(intent)
+            }
+            timeTextView2.setOnClickListener {
+                addAlarmUp(splitHour(timeTextView2), splitMinute(timeTextView2))
+                startActivity(intent)
+            }
+            timeTextView3.setOnClickListener {
+                addAlarmUp(splitHour(timeTextView3), splitMinute(timeTextView3))
+                startActivity(intent)
+            }
+            timeTextView4.setOnClickListener {
+                addAlarmUp(splitHour(timeTextView4), splitMinute(timeTextView4))
+                startActivity(intent)
+            }
+            timeTextView5.setOnClickListener {
+                addAlarmUp(splitHour(timeTextView5), splitMinute(timeTextView5))
+                startActivity(intent)
+            }
+        }
     }
 
 
@@ -103,5 +155,13 @@ class RecommendupActivity2 : AppCompatActivity() {
             return num.toString();
         }
     }
+
+    private fun splitHour(textview: TextView): Int {
+        return textview.text.toString().split("시")[0].toInt() }
+
+    private fun splitMinute(textview: TextView): Int {
+        return textview.text.toString().split("시")[1]
+            .replace("분", "")
+            .replace(" ", "").toInt() }
 
 }
