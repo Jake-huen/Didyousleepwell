@@ -30,6 +30,7 @@
             android:name=".RecommendupActivity"
             android:exported="false" />
 
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
