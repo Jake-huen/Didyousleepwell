@@ -3,6 +3,7 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -11,6 +12,9 @@
         android:roundIcon="@mipmap/ic_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".RadioActivity"
+            android:exported="false" />
         <activity
             android:name=".DateActivity"
             android:exported="false" />
@@ -29,12 +33,9 @@
         <activity
             android:name=".RecommendupActivity"
             android:exported="false" />
-
         <activity
             android:name=".SettingActivity"
-            android:exported="false"/>
-
-
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -45,9 +46,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".Alarm"/>
-
-
+        <receiver android:name=".Alarm" />
+        <receiver android:name=".Alarm2" />
     </application>
 
 </manifest>
