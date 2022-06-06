@@ -267,4 +267,14 @@ class DBHelper(
 
         return list.get(0).down
     }
+
+    fun updateTodo(id: Int, memo: String) {
+        var wd: SQLiteDatabase = writableDatabase
+        wd.execSQL(
+            "UPDATE todo SET todo = '$memo' where id = $id"
+        )
+        wd.close()
+
+    }
+
 }

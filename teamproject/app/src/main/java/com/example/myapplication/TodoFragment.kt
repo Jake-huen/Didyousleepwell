@@ -1,13 +1,14 @@
 package com.example.myapplication
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,7 +63,30 @@ class TodoFragment : Fragment() {
             }
 
             override fun OnItemEdit(data: Tododata, pos: Int) {
-                TODO("Not yet implemented")
+
+                var builder = AlertDialog.Builder(activity)
+                builder.setTitle("Todo를 수정합니다.")
+                builder.setIcon(R.drawable.icon)
+
+                var v1 = layoutInflater.inflate(R.layout.dialog, null)
+                builder.setView(v1)
+                // p0에 해당 AlertDialog가 들어온다. findViewById를 통해 view를 가져와서 사용
+
+                var listener = DialogInterface.OnClickListener { p0, p1 ->
+                    var alert = p0 as AlertDialog
+                    var edit1: EditText? = alert.findViewById<EditText>(R.id.editTextDialog)
+
+                    val text = "${edit1?.text}"
+
+                    dbHelper.updateTodo(dataList[pos].id, text)
+                    initData()
+                    adapter.notifyItemChanged(pos)
+                }
+
+                builder.setPositiveButton("확인", listener)
+                builder.setNegativeButton("취소", null)
+                builder.show()
+
             }
         }
         recyclerView.adapter = adapter
