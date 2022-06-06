@@ -30,6 +30,13 @@ class RadioActivity : AppCompatActivity() {
         binding = ActivityRadioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val flag = intent.getIntExtra("알람", 0)
+        if(flag == 1){
+            binding.alarmLayout.setBackgroundResource(R.drawable.green_forest)
+            binding.radioTimeText.text = "잘..잤어요?"
+        }
+
+
         // 기상송 오른쪽 R.raw.song 바꿔주세요 : 현재는 가지고 있던 캐롤송으로 붙여놨습니다.
         mediaPlayer = MediaPlayer.create(this, R.raw.song)
 
@@ -63,9 +70,7 @@ class RadioActivity : AppCompatActivity() {
             }
 
         }
-
     }
-
 
     private fun updateRemainTime(remainMillis: Long):Long {
         val remainSeconds = remainMillis / 1000

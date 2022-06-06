@@ -23,6 +23,12 @@ class Alarm: BroadcastReceiver(){
             createNotificationChannel(CHANNEL_ID, "mainChannel", "main channel에서 알람 사용")
             displayNotification()
 
+            val newIntent = Intent(context, RadioActivity::class.java)
+            newIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            newIntent.putExtra("알람", 1)
+            context?.startActivity(newIntent)
+
+
         }
     }
 
