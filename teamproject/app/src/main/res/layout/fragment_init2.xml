@@ -28,8 +28,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/titleaa"
         android:text="권한 허용"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="238dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="@font/ef_diary"/>
 
 
