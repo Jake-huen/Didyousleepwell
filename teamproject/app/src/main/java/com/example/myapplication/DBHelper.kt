@@ -59,8 +59,8 @@ class DBHelper(
         val values = ContentValues()
         // "테이블이름", 정보
         values.put("date",data.date)
-        values.put("down",data.up)
-        values.put("up",data.down)
+        values.put("down",data.down)
+        values.put("up",data.up)
         val wd = writableDatabase
         wd.insert("sleep_time",null,values)
         wd.close()
@@ -101,6 +101,14 @@ class DBHelper(
         values.put("todo",todo.textString)
         val wd = writableDatabase
         wd.insert("todo",null,values)
+        wd.close()
+    }
+
+    fun updateSleepTimeData(data:DataSleepTime) {
+        val wd = writableDatabase
+        wd.execSQL(
+            "UPDATE sleep_time SET down = '"+data.down+"', up = '"+data.up+"' where date ='"+data.date+"'"
+        )
         wd.close()
     }
 
@@ -219,16 +227,21 @@ class DBHelper(
         wd.close()
 
     }
-    fun getup():String{
+    fun getup(date: String):String{
         Log.e("abcd", "띠용?")
         val list = mutableListOf<DataSleepTime>()
         //전체조회
-        val selectAll = "select * from sleep_time"
+        val selectAll = "select * from sleep_time where date ='"+date+"'"
         //읽기전용 데이터베이스 변수
+
         val rd = readableDatabase
         //데이터를 받아 줍니다.
         val cursor = rd.rawQuery(selectAll,null)
-
+        if(cursor.count==0){
+            cursor.close()
+            rd.close()
+            return "데이터 없음"
+        }
         // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
         // 빨간 줄이어도 무시해주도록 합시당
         while(cursor.moveToNext()){
@@ -243,16 +256,20 @@ class DBHelper(
 
         return list.get(0).up
     }
-    fun getdown():String{
+    fun getdown(date: String):String{
         Log.e("abcd", "띠용?")
         val list = mutableListOf<DataSleepTime>()
         //전체조회
-        val selectAll = "select * from sleep_time"
+        val selectAll = "select * from sleep_time where date ='"+date+"'"
         //읽기전용 데이터베이스 변수
         val rd = readableDatabase
         //데이터를 받아 줍니다.
         val cursor = rd.rawQuery(selectAll,null)
-
+        if(cursor.count==0){
+            cursor.close()
+            rd.close()
+            return "데이터 없음"
+        }
         // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
         // 빨간 줄이어도 무시해주도록 합시당
         while(cursor.moveToNext()){
@@ -266,5 +283,34 @@ class DBHelper(
         rd.close()
 
         return list.get(0).down
+    }
+    fun getUpDownDate(date: String):Boolean{
+        Log.e("abcd", "띠용?")
+        val list = mutableListOf<DataSleepTime>()
+        //전체조회
+        val selectAll = "select * from sleep_time where date ='"+date+"'"
+
+        //읽기전용 데이터베이스 변수
+        val rd = readableDatabase
+        //데이터를 받아 줍니다.
+        val cursor = rd.rawQuery(selectAll,null)
+        if(cursor.count==0){
+            cursor.close()
+            rd.close()
+            return true
+        }
+        // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
+        // 빨간 줄이어도 무시해주도록 합시당
+        while(cursor.moveToNext()){
+            val date = cursor.getString(cursor.getColumnIndex("date"))
+            val down = cursor.getString(cursor.getColumnIndex("down"))
+            val up = cursor.getString(cursor.getColumnIndex("up"))
+
+            list.add(DataSleepTime(date,down, up))
+        }
+        cursor.close()
+        rd.close()
+
+        return false
     }
 }
