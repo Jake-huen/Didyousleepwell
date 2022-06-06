@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.myapplication.databinding.ActivityRecommendup2Binding
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
@@ -24,6 +25,15 @@ class RecommendupActivity2 : AppCompatActivity() {
     private var hour by Delegates.notNull<Int>()
     private var minute by Delegates.notNull<Int>()
     private var dbHelper = DBHelper(this, "dysw.db", null, 1)
+    // Date 객체 초기화
+    val date = Date()
+
+    // 날짜, 시간을 가져오고 싶은 형태 선언
+    val hourFormat = SimpleDateFormat("HH")
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+
+    // 캘린더 객체 가져와서 시간 set
+    val calendar = Calendar.getInstance()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,22 +91,87 @@ class RecommendupActivity2 : AppCompatActivity() {
         binding.apply {
             timeTextView1.setOnClickListener {
                 addAlarmUp(splitHour(timeTextView1), splitMinute(timeTextView1))
+                val calendarTime = calendar.time
+                if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
+                    calendar.add(Calendar.DATE, -1)
+                }
+                val dateTime = calendar.time
+                val formatting = dateFormat.format(dateTime)
+                val data = DataSleepTime(formatting+"", hour.toString()+":"+minute.toString(),splitHour(timeTextView1).toString()+":" +splitMinute(timeTextView1).toString())
+                if(dbHelper.getUpDownDate(formatting)) {//같은 날짜가 없으면
+                    dbHelper.insertSleepTimeData(data)
+                }
+                else{//있으면
+                    dbHelper.updateSleepTimeData(data)
+                }
                 startActivity(intent)
             }
             timeTextView2.setOnClickListener {
                 addAlarmUp(splitHour(timeTextView2), splitMinute(timeTextView2))
+                val calendarTime = calendar.time
+                if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
+                    calendar.add(Calendar.DATE, -1)
+                }
+                val dateTime = calendar.time
+                val formatting = dateFormat.format(dateTime)
+                val data = DataSleepTime(formatting+"", hour.toString()+":"+minute.toString(),splitHour(timeTextView2).toString()+":" +splitMinute(timeTextView2).toString())
+                if(dbHelper.getUpDownDate(formatting)) {//같은 날짜가 없으면
+                    dbHelper.insertSleepTimeData(data)
+                }
+                else{//있으면
+                    dbHelper.updateSleepTimeData(data)
+                }
                 startActivity(intent)
             }
             timeTextView3.setOnClickListener {
                 addAlarmUp(splitHour(timeTextView3), splitMinute(timeTextView3))
+                val calendarTime = calendar.time
+                if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
+                    calendar.add(Calendar.DATE, -1)
+                }
+                val dateTime = calendar.time
+                val formatting = dateFormat.format(dateTime)
+                val data = DataSleepTime(formatting+"", hour.toString()+":"+minute.toString(),splitHour(timeTextView3).toString()+":" +splitMinute(timeTextView3).toString())
+                if(dbHelper.getUpDownDate(formatting)) {//같은 날짜가 없으면
+                    dbHelper.insertSleepTimeData(data)
+                }
+                else{//있으면
+                    dbHelper.updateSleepTimeData(data)
+                }
                 startActivity(intent)
             }
             timeTextView4.setOnClickListener {
                 addAlarmUp(splitHour(timeTextView4), splitMinute(timeTextView4))
+                val calendarTime = calendar.time
+                if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
+                    calendar.add(Calendar.DATE, -1)
+                }
+                val dateTime = calendar.time
+                val formatting = dateFormat.format(dateTime)
+                val data = DataSleepTime(formatting+"", hour.toString()+":"+minute.toString(),splitHour(timeTextView4).toString()+":" +splitMinute(timeTextView4).toString())
+                if(dbHelper.getUpDownDate(formatting)) {//같은 날짜가 없으면
+                    dbHelper.insertSleepTimeData(data)
+                }
+                else{//있으면
+                    dbHelper.updateSleepTimeData(data)
+                }
                 startActivity(intent)
             }
             timeTextView5.setOnClickListener {
                 addAlarmUp(splitHour(timeTextView5), splitMinute(timeTextView5))
+                val calendarTime = calendar.time
+                if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
+                    calendar.add(Calendar.DATE, -1)
+                }
+                val dateTime = calendar.time
+                val formatting = dateFormat.format(dateTime)
+                val data = DataSleepTime(formatting+"", hour.toString()+":"+minute.toString(),splitHour(timeTextView5).toString()+":" +splitMinute(timeTextView5).toString())
+                if(dbHelper.getUpDownDate(formatting)) {//같은 날짜가 없으면
+                    dbHelper.insertSleepTimeData(data)
+                }
+                else{//있으면
+                    dbHelper.updateSleepTimeData(data)
+                }
                 startActivity(intent)
             }
         }
@@ -105,6 +180,7 @@ class RecommendupActivity2 : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initlayout() {
+        calendar.setTime(date)
 
         val sleepTime = dbHelper.getTimeFallSleep()
         Log.d("sleeptime", sleepTime.toString())

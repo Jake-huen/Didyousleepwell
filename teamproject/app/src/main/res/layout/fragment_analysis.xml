@@ -35,7 +35,7 @@
 
         <TableRow>
             <TextView
-                android:text="기상 시간"
+                android:text="취침 시간"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -60,7 +60,7 @@
 
         <TableRow>
             <TextView
-                android:text="취침 시간"
+                android:text="기상 시간"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
