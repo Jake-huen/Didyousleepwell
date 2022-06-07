@@ -14,8 +14,6 @@ import java.time.format.DateTimeFormatter
 class AnalysisFragment : Fragment() {
     var binding:FragmentAnalysisBinding?=null
     val imglist = arrayListOf<Int>(R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five)
-    //적정 시간 - 수면 시간의 절댓값으로 수면 등급 나누는 변수
-    val check=5
     private lateinit var date: String
 
     override fun onAttach(context: Context) {
@@ -42,68 +40,112 @@ class AnalysisFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //상태 체크해서 이미지 띄우고, 각 이미지 별로 평가 한줄~
 
         initData()
-
-        when(check){
-            1->{
-                binding!!.imageView4.setImageResource(imglist[0])
-                binding!!.imageView4.setOnClickListener {
-                    Toast.makeText(context, "너무 잘 잤어요!!", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-            2->{
-                binding!!.imageView4.setImageResource(imglist[1])
-                binding!!.imageView4.setOnClickListener {
-                    Toast.makeText(context, "잘 잤네요~", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-            3->{
-                binding!!.imageView4.setImageResource(imglist[2])
-                binding!!.imageView4.setOnClickListener {
-                    Toast.makeText(context, "잤네요..", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-            4->{
-                binding!!.imageView4.setImageResource(imglist[3])
-                binding!!.imageView4.setOnClickListener {
-                    Toast.makeText(context, "잤어요..?", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-            5->{
-                binding!!.imageView4.setImageResource(imglist[4])
-                binding!!.imageView4.setOnClickListener {
-                    Toast.makeText(context, "XX", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-        }
 
     }
     private fun initData() {
         val dbHelper = DBHelper(context, "dysw.db", null, 1)
-        //취침 시간
         val listdown = dbHelper.getdown(date)
-        var listdownH = listdown.split(":")[0].toInt()
-        var listdownM = listdown.split(":")[1].toInt()
-        binding!!.textView1.text = getTime(listdownH) + "시 "+ getTime(listdownM)+"분"
-
-        //기상 시간
         val listup = dbHelper.getup(date)
-        var listupH = listup.split(":")[0].toInt()
-        var listupM = listup.split(":")[1].toInt()
-        binding!!.textView2.text = getTime(listupH) + "시 "+ getTime(listupM)+"분"
+        if(listdown=="데이터 없음"||listup=="데이터 없음"){
+            binding!!.textView1.text = listdown
+            binding!!.textView2.text = listup
+            binding!!.textView3.text = "데이터 없음"
+        }
+        else {
+            //취침 시간
+            var listdownH = listdown.split(":")[0].toInt()
+            var listdownM = listdown.split(":")[1].toInt()
+            binding!!.textView1.text = getTime(listdownH) + "시 " + getTime(listdownM) + "분"
 
-        //수면 시간
-        binding!!.textView3.text = totalTime(listdown, listup)
+            //기상 시간
+            var listupH = listup.split(":")[0].toInt()
+            var listupM = listup.split(":")[1].toInt()
+            binding!!.textView2.text = getTime(listupH) + "시 " + getTime(listupM) + "분"
 
+            //수면 시간
+            binding!!.textView3.text = totalTime(listdown, listup).split(":")[0] + "시간 "+
+                    totalTime(listdown, listup).split(":")[1]+"분"
+        }
         //적정 시간
+        var age = dbHelper.getAge()
+        var goodTimeNum:String = "00:00"
+        var goodTime:String = "00시간 00분"
+        when(age) {
+            in 0 .. 2 -> { // 0세~ 1세 8사이클(12시간) ~  10사이클(15시간)
+                goodTimeNum = "12:00"
+                goodTime = "12시간 00분"
+            }
+            in 2 .. 4 -> { // 2세~ 3세 7사이클(10시간30분) ~  9사이클(13시간 30분)
+                goodTimeNum = "10:30"
+                goodTime = "10시간 30분"
+            }
+            in 4 .. 7 -> { // 4세~ 6세 6사이클(9시간) ~  8사이클(12시간)
+                goodTimeNum = "09:00"
+                goodTime = "9시간 00분"
+            }
+            in 7 .. 15 -> { // 7세~ 14세 6사이클(9시간) ~  7사이클(10시간 30분)
+                goodTimeNum = "09:00"
+                goodTime = "9시간 00분"
+            }
+            in 15 .. 19 -> { // 15세~ 18세 6사이클(9시간) ~  7사이클(10시간 30분)
+                goodTimeNum = "09:00"
+                goodTime = "9시간 00분"
+            }
+            in 19 .. 66 -> { // 19세~ 65세 5사이클(7시간 30분) ~  6사이클(9시간)
+                goodTimeNum = "07:30"
+                goodTime = "7시간 30분"
+            }
+            in 66 .. 199 -> { // other  5사이클(7시간 30분)
+                goodTimeNum = "07:30"
+                goodTime = "7시간 30분"
+            }
+        }
+        binding!!.textView4.text = goodTime
 
+        //상태
+        if(listdown=="데이터 없음"||listup=="데이터 없음"){
+            binding!!.imageView4.setImageResource(imglist[2])
+            binding!!.imageView4.setOnClickListener {
+                Toast.makeText(context, "데이터 없음", Toast.LENGTH_SHORT).show()
+            }
+        }
+        else {
+            //이미지 띄우기
+            var check = status(totalTime(listdown,listup), goodTimeNum)
+
+            when (check) {
+                in 0 .. 1 -> {//30분 이내
+                    binding!!.imageView4.setImageResource(imglist[0])
+                    binding!!.imageView4.setOnClickListener {
+                        Toast.makeText(context, "너무 잘 잤어요!!", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+                in 1 .. 3 -> {//30분~1시간 30분
+                    binding!!.imageView4.setImageResource(imglist[1])
+                    binding!!.imageView4.setOnClickListener {
+                        Toast.makeText(context, "잘 잤네요~", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+                in 3 .. 6 -> {//1시간 30분~3시간
+                    binding!!.imageView4.setImageResource(imglist[3])
+                    binding!!.imageView4.setOnClickListener {
+                        Toast.makeText(context, "잤네요..", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+                in 6 .. 24 -> {//3시간~
+                    binding!!.imageView4.setImageResource(imglist[4])
+                    binding!!.imageView4.setOnClickListener {
+                        Toast.makeText(context, "잤어요..?", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
+        }
     }
     fun getTime(num:Int):String{
         if(num>=0 && num<10){
@@ -138,6 +180,11 @@ class AnalysisFragment : Fragment() {
             }
         }
 
-        return totalH.toString() + "시간 " + totalM.toString()+"분"
+        return totalH.toString() + ":" + totalM.toString()
+    }
+    fun status(num1: String, num2: String):Int{
+        var a = (num1.split(":")[0].toInt() * 60) + num1.split(":")[1].toInt()
+        var b = (num2.split(":")[0].toInt() * 60) + num2.split(":")[1].toInt()
+        return Math.abs(a-b) / 30
     }
 }
