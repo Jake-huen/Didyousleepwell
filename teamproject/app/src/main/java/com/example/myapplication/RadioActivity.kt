@@ -147,10 +147,6 @@ class RadioActivity : AppCompatActivity() {
         compareHour += -24 + (Localtime.hour - hour.toInt())
 
 
-        Log.e("date", compareHour.toString()+ "Hour")
-        Log.e("date", compareMinute.toString()+ "Minute")
-
-
 
 
         // 둘 중 하나라도 음수면 day를 하루 늘림.
@@ -161,8 +157,6 @@ class RadioActivity : AppCompatActivity() {
             set(Calendar.MONTH, month.toInt())
             if(((compareHour < 0)) or (compareMinute < 0)){
                 set(Calendar.DAY_OF_MONTH, day.toInt()+1)
-                Log.e("date", LocalDateTime.now().plusDays(1).dayOfMonth.toString())
-                Log.e("date", day.toString() + " : abc")
             }
             else{
                 set(Calendar.DAY_OF_MONTH, day.toInt())
