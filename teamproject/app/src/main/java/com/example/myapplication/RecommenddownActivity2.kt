@@ -16,6 +16,8 @@ import android.app.PendingIntent
 import android.widget.TextView
 import android.widget.Toast
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 
 class RecommenddownActivity2 : AppCompatActivity() {
@@ -40,7 +42,6 @@ class RecommenddownActivity2 : AppCompatActivity() {
         binding = ActivityRecommenddown2Binding.inflate(layoutInflater)
         setContentView(binding.root)
         initLayout()
-        addAlarmUp(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
         alarmBtnSet() // 자야 할 시간에 주무십시오 알람을 준다.
     }
 
@@ -56,7 +57,9 @@ class RecommenddownActivity2 : AppCompatActivity() {
         var pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val cal = Calendar.getInstance()
-
+        if(LocalDateTime.now().hour - hour > 0){ // flag -> 현재시간 - 깨우는 시간 > 0 이므로 오류인 알람이 불러와짐. day 하루 늘림.
+            cal.set(Calendar.DAY_OF_MONTH, LocalDate.now().plusDays(1).dayOfMonth)
+        }
         cal.set(Calendar.HOUR_OF_DAY, hour) // hour 인자 설정
         cal.set(Calendar.MINUTE, minute) // minute 인자 설정
         cal.set(Calendar.SECOND, 0)
@@ -92,6 +95,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
         binding.apply {
             timeTextView1.setOnClickListener {
                 addAlarmDown(splitHour(timeTextView1), splitMinute(timeTextView1))
+                addAlarmUp(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {
                     calendar.add(Calendar.DATE, -1)
@@ -110,6 +114,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
             }
             timeTextView2.setOnClickListener {
                 addAlarmDown(splitHour(timeTextView2), splitMinute(timeTextView2))
+                addAlarmUp(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {
                     calendar.add(Calendar.DATE, -1)
@@ -128,6 +133,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
             }
             timeTextView3.setOnClickListener {
                 addAlarmDown(splitHour(timeTextView3), splitMinute(timeTextView3))
+                addAlarmUp(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {
                     calendar.add(Calendar.DATE, -1)
@@ -146,6 +152,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
             }
             timeTextView4.setOnClickListener {
                 addAlarmDown(splitHour(timeTextView4), splitMinute(timeTextView4))
+                addAlarmUp(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {
                     calendar.add(Calendar.DATE, -1)
@@ -164,6 +171,7 @@ class RecommenddownActivity2 : AppCompatActivity() {
             }
             timeTextView5.setOnClickListener {
                 addAlarmDown(splitHour(timeTextView5), splitMinute(timeTextView5))
+                addAlarmUp(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {
                     calendar.add(Calendar.DATE, -1)

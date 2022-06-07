@@ -134,11 +134,42 @@ class RadioActivity : AppCompatActivity() {
             set(Calendar.MILLISECOND, 0)
         }.timeInMillis
 
+        var Localtime = LocalDateTime.now()
+
+        var compareHour = 0
+        var compareMinute = 0
+        if(Localtime.minute - minute.toInt() > 0){
+            compareMinute = -60 + (Localtime.minute-minute.toInt())
+            compareHour += -1
+        }else{
+            compareMinute = (Localtime.minute-minute.toInt())
+        }
+        compareHour += -24 + (Localtime.hour - hour.toInt())
+
+
+        Log.e("date", compareHour.toString()+ "Hour")
+        Log.e("date", compareMinute.toString()+ "Minute")
+
+
+
+
+        // 둘 중 하나라도 음수면 day를 하루 늘림.
+
         // up 시간
         val lastDay = Calendar.getInstance().apply {
             set(Calendar.YEAR, year.toInt())
             set(Calendar.MONTH, month.toInt())
-            set(Calendar.DAY_OF_MONTH, day.toInt()+1)
+            if(((compareHour < 0)) or (compareMinute < 0)){
+                set(Calendar.DAY_OF_MONTH, day.toInt()+1)
+                Log.e("date", LocalDateTime.now().plusDays(1).dayOfMonth.toString())
+                Log.e("date", day.toString() + " : abc")
+            }
+            else{
+                set(Calendar.DAY_OF_MONTH, day.toInt())
+            }
+//            if(compareHour <= -24){
+//                set(Calendar.DAY_OF_MONTH, day.toInt()+1)
+//            }
             set(Calendar.HOUR_OF_DAY, hour.toInt())
             set(Calendar.MINUTE, minute.toInt())
             set(Calendar.SECOND, 0)

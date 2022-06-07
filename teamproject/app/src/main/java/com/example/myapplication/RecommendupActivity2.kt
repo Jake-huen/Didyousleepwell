@@ -15,6 +15,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.myapplication.databinding.ActivityRecommendup2Binding
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 import kotlin.properties.Delegates
 
@@ -41,7 +43,6 @@ class RecommendupActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initlayout()
-        addAlarmDown(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
         alarmBtnSet() // 자야 할 시간에 주무십시오 알람을 준다.
     }
 
@@ -55,7 +56,9 @@ class RecommendupActivity2 : AppCompatActivity() {
         var pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val cal = Calendar.getInstance()
-
+        if(LocalDateTime.now().hour - hour > 0){ // flag -> 현재시간 - 깨우는 시간 > 0 이므로 오류인 알람이 불러와짐. day 하루 늘림.
+            cal.set(Calendar.DAY_OF_MONTH, LocalDate.now().plusDays(1).dayOfMonth)
+        }
         cal.set(Calendar.HOUR_OF_DAY, hour) // hour 인자 설정
         cal.set(Calendar.MINUTE, minute) // minute 인자 설정
         cal.set(Calendar.SECOND, 0)
@@ -90,6 +93,7 @@ class RecommendupActivity2 : AppCompatActivity() {
 
         binding.apply {
             timeTextView1.setOnClickListener {
+                addAlarmDown(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 addAlarmUp(splitHour(timeTextView1), splitMinute(timeTextView1))
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
@@ -107,6 +111,7 @@ class RecommendupActivity2 : AppCompatActivity() {
                 startActivity(intent)
             }
             timeTextView2.setOnClickListener {
+                addAlarmDown(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 addAlarmUp(splitHour(timeTextView2), splitMinute(timeTextView2))
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
@@ -124,6 +129,7 @@ class RecommendupActivity2 : AppCompatActivity() {
                 startActivity(intent)
             }
             timeTextView3.setOnClickListener {
+                addAlarmDown(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 addAlarmUp(splitHour(timeTextView3), splitMinute(timeTextView3))
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
@@ -141,6 +147,7 @@ class RecommendupActivity2 : AppCompatActivity() {
                 startActivity(intent)
             }
             timeTextView4.setOnClickListener {
+                addAlarmDown(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 addAlarmUp(splitHour(timeTextView4), splitMinute(timeTextView4))
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
@@ -158,6 +165,7 @@ class RecommendupActivity2 : AppCompatActivity() {
                 startActivity(intent)
             }
             timeTextView5.setOnClickListener {
+                addAlarmDown(hour, minute) // 깨어날 시간에 투두리스트 알람을 준다.
                 addAlarmUp(splitHour(timeTextView5), splitMinute(timeTextView5))
                 val calendarTime = calendar.time
                 if(hourFormat.format(calendarTime).toInt()<6) {//현재 시간이 6시 이전이면 새벽에 자는걸로 생각하고 전 날로 기록
