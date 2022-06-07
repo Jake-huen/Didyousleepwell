@@ -149,7 +149,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="2"
-                android:src="@drawable/ic_baseline_face_24"
+                android:src="@drawable/three"
                 android:gravity="center"
                 android:layout_margin="10dp"
                 />
