@@ -8,6 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.myapplication.databinding.ActivityRadioBinding
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 import kotlin.concurrent.thread
@@ -36,9 +37,13 @@ class RadioActivity : AppCompatActivity() {
             binding.radioTimeText.text = "잘..잤어요?"
         }
 
+        //12월이면 캐롤을 틀도록 하자! 헿
+        mediaPlayer = if(LocalDate.now().monthValue == 12){
+            MediaPlayer.create(this, R.raw.song)
+        } else{ // 나머지는 군대 기상송.
+            MediaPlayer.create(this, R.raw.morningcall_mil)
+        }
 
-        // 기상송 오른쪽 R.raw.song 바꿔주세요 : 현재는 가지고 있던 캐롤송으로 붙여놨습니다.
-        mediaPlayer = MediaPlayer.create(this, R.raw.song)
 
         timeText = binding.radioTimeText
         timeText!!.text = alarmTimer().toString()
@@ -114,8 +119,9 @@ class RadioActivity : AppCompatActivity() {
 //        if(dateTime.hour < 6){
 //
 //        }
-//        val downtime = list[list.size-1].down
-//        val downhour = downtime.split(":")
+        var downtime = list[list.size-1].down
+        var downhour = downtime.split(":")[0]
+        var downminute = downtime.split(":")[1]
 
         val time = list[list.size - 1].up
         val hour = time.split(":")[0]
@@ -138,13 +144,33 @@ class RadioActivity : AppCompatActivity() {
 
         var compareHour = 0
         var compareMinute = 0
-        if(Localtime.minute - minute.toInt() > 0){
-            compareMinute = -60 + (Localtime.minute-minute.toInt())
-            compareHour += -1
-        }else{
-            compareMinute = (Localtime.minute-minute.toInt())
+
+//        Log.e("time", downhour)
+//        Log.e("time", hour)
+
+
+
+        if(downhour.toInt() < hour.toInt()){
+            compareHour = -1
+            if(downhour.toInt() < 6){
+                compareHour = 0
+            }
         }
-        compareHour += -24 + (Localtime.hour - hour.toInt())
+
+
+
+//        if(Localtime.minute - minute.toInt() > 0){
+//            compareMinute = -60 + (Localtime.minute-minute.toInt())
+//            compareHour += -1
+//        }else{
+//            compareMinute = (Localtime.minute-minute.toInt())
+//        }
+//
+//        if(Localtime.hour<hour.toInt()){
+//            compareHour += (Localtime.hour - hour.toInt())
+//        }else{
+//        compareHour += -24 + (Localtime.hour - hour.toInt())
+//        }
 
 
 
@@ -155,8 +181,11 @@ class RadioActivity : AppCompatActivity() {
         val lastDay = Calendar.getInstance().apply {
             set(Calendar.YEAR, year.toInt())
             set(Calendar.MONTH, month.toInt())
-            if(((compareHour < 0)) or (compareMinute < 0)){
+//            if(((compareHour < 0)) or (compareMinute < 0)){
+            if(compareHour == 0){
                 set(Calendar.DAY_OF_MONTH, day.toInt()+1)
+//                Log.e("time", compareHour.toString())
+//                Log.e("time", compareMinute.toString())
             }
             else{
                 set(Calendar.DAY_OF_MONTH, day.toInt())
@@ -169,6 +198,8 @@ class RadioActivity : AppCompatActivity() {
             set(Calendar.SECOND, 0)
             set(Calendar.MILLISECOND, 0)
         }.timeInMillis
+
+//        Log.e("time", (lastDay-beginDay).toString())
 
         return lastDay - beginDay
 
