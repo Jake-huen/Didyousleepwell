@@ -113,6 +113,7 @@ class TodoFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                dbHelper.deleteTodo(dataList[viewHolder.adapterPosition].id.toString())
                 adapter.removeItem(viewHolder.adapterPosition)
             }
         }
