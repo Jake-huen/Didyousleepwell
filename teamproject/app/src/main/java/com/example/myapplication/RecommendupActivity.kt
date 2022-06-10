@@ -35,5 +35,6 @@ class RecommendupActivity : AppCompatActivity() {
 
 
 
+
     }
 }

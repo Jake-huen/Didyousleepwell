@@ -12,35 +12,33 @@ class DBHelper(
     factory: SQLiteDatabase.CursorFactory?,
     version: Int
 ): SQLiteOpenHelper(context, name, factory, version){
-
-
     //데이터베이스가 만들어 지지않은 상태에서만 작동. 이미 만들어져 있는 상태라면 실행X
     override fun onCreate(db: SQLiteDatabase) {
-
         // sleep_time 테이블 생성
         val sql: String = "CREATE TABLE if not exists sleep_time(" +
-                "id integer primary key autoincrement," +
-                "recommend_time datetime," +
-                "recommend_flag Integer);"
-
+                "date string," +
+                "down string," +
+                "up string);"
         db.execSQL(sql)
         // user 테이블 생성
         val sql2: String = "CREATE TABLE if not exists user(" +
                 "age integer," +
                 "time_fall_sleep integer);"
-
         db.execSQL(sql2)
-
+        // 그 날짜의 todo_list 생성
+        val sql3:String = "CREATE TABLE if not exists todo(" +
+                "id integer primary key autoincrement," +
+                "date string," +
+                "todo string);"
+        db.execSQL(sql3)
     }
-
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         val sql: String = "DROP TABLE if exists sleep_time"
         db.execSQL(sql)
+        val sql2 = "DROP TABLE if exists todo"
+        db.execSQL(sql2)
         onCreate(db)
     }
-
-
-
     /*
     insert SleepTIme Data 메소드
     DataSleepTime 객체를 주시면 Insert 됩니다.
@@ -60,8 +58,9 @@ class DBHelper(
     fun insertSleepTimeData(data:DataSleepTime){
         val values = ContentValues()
         // "테이블이름", 정보
-        values.put("recommend_time",data.recommendTime)
-        values.put("recommend_flag",data.recommend_flag)
+        values.put("date",data.date)
+        values.put("down",data.down)
+        values.put("up",data.up)
         val wd = writableDatabase
         wd.insert("sleep_time",null,values)
         wd.close()
@@ -80,6 +79,40 @@ class DBHelper(
         wd.close()
     }
 
+//    fun updateUserData(age: Int, minute: Int){
+//        val wd = writableDatabase
+//        var query = "UPDATE user SET age = $age AND time_fall_sleep = $minute"
+//        val cursor = wd.rawQuery(query, null)
+//        val values = ContentValues()
+//        wd.update("user", values, "$age =?", )
+//    }
+
+    fun updateUserData(age:Int, minute:Int) {
+        var wd: SQLiteDatabase = writableDatabase
+        wd.execSQL(
+            "UPDATE user SET age = $age,time_fall_sleep = $minute"
+        )
+        wd.close()
+    }
+
+    fun insertTodoData(date:String, todo:Tododata){
+        val values = ContentValues()
+        values.put("date",date)
+        values.put("todo",todo.textString)
+        val wd = writableDatabase
+        wd.insert("todo",null,values)
+        wd.close()
+    }
+
+    fun updateSleepTimeData(data:DataSleepTime) {
+        val wd = writableDatabase
+        wd.execSQL(
+            "UPDATE sleep_time SET down = '"+data.down+"', up = '"+data.up+"' where date ='"+data.date+"'"
+        )
+        wd.close()
+    }
+
+
 
     //select 메소드 밑에는 사용법.
 //    val list = dbHelper.selectSleepTime()
@@ -96,11 +129,38 @@ class DBHelper(
         // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
         // 빨간 줄이어도 무시해주도록 합시당
         while(cursor.moveToNext()){
-            val id = cursor.getInt(cursor.getColumnIndex("id"))
-            val recommend_time = cursor.getString(cursor.getColumnIndex("recommend_time"))
-            val recoomend_flag = cursor.getInt(cursor.getColumnIndex("recommend_flag"))
+            val date = cursor.getString(cursor.getColumnIndex("date"))
+            val down = cursor.getString(cursor.getColumnIndex("down"))
+            val up = cursor.getString(cursor.getColumnIndex("up"))
 
-            list.add(DataSleepTime(id, recommend_time, recoomend_flag))
+            list.add(DataSleepTime(date, down, up))
+        }
+        cursor.close()
+        rd.close()
+
+        return list
+    }
+
+
+    //select 메소드 밑에는 사용법.
+//    val list = dbHelper.selectSleepTime()
+//    Log.e("error", list.get(0).recommendTime)
+    fun selectTodo(date: String):MutableList<Tododata>{
+        val list = mutableListOf<Tododata>()
+        //전체조회
+        val selectAll = "select * from todo where date " + "=" + "'" + date + "';"
+        //읽기전용 데이터베이스 변수
+        val rd = readableDatabase
+        //데이터를 받아 줍니다.
+        val cursor = rd.rawQuery(selectAll,null)
+
+        // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
+        // 빨간 줄이어도 무시해주도록 합시당
+        while(cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndex("id"))
+            val todo1 = cursor.getString(cursor.getColumnIndex("todo"))
+
+            list.add(Tododata(id, todo1, false))
         }
         cursor.close()
         rd.close()
@@ -111,7 +171,6 @@ class DBHelper(
 
 
     fun getAge():Int{
-        Log.e("abcd", "띠용?")
         val list = mutableListOf<UserData>()
         //전체조회
         val selectAll = "select * from user"
@@ -136,7 +195,6 @@ class DBHelper(
 
 
     fun getTimeFallSleep():Int{
-        Log.e("abcd", "띠용?")
         val list = mutableListOf<UserData>()
         //전체조회
         val selectAll = "select * from user"
@@ -157,5 +215,111 @@ class DBHelper(
         rd.close()
 
         return list.get(0).time_fall_sleep
+    }
+
+    fun deleteTodo(id: String) {
+
+        val deleteTodo = "Delete from todo where id " + "=" + id + ";"
+        //읽기전용 데이터베이스 변수
+        val wd = writableDatabase
+        //데이터를 받아 줍니다.
+        wd.execSQL(deleteTodo)
+        wd.close()
+
+    }
+    fun getup(date: String):String{
+        Log.e("abcd", "띠용?")
+        val list = mutableListOf<DataSleepTime>()
+        //전체조회
+        val selectAll = "select * from sleep_time where date ='"+date+"'"
+        //읽기전용 데이터베이스 변수
+
+        val rd = readableDatabase
+        //데이터를 받아 줍니다.
+        val cursor = rd.rawQuery(selectAll,null)
+        if(cursor.count==0){
+            cursor.close()
+            rd.close()
+            return "데이터 없음"
+        }
+        // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
+        // 빨간 줄이어도 무시해주도록 합시당
+        while(cursor.moveToNext()){
+            val date = cursor.getString(cursor.getColumnIndex("date"))
+            val down = cursor.getString(cursor.getColumnIndex("down"))
+            val up = cursor.getString(cursor.getColumnIndex("up"))
+
+            list.add(DataSleepTime(date,down, up))
+        }
+        cursor.close()
+        rd.close()
+
+        return list.get(0).up
+    }
+    fun getdown(date: String):String{
+        Log.e("abcd", "띠용?")
+        val list = mutableListOf<DataSleepTime>()
+        //전체조회
+        val selectAll = "select * from sleep_time where date ='"+date+"'"
+        //읽기전용 데이터베이스 변수
+        val rd = readableDatabase
+        //데이터를 받아 줍니다.
+        val cursor = rd.rawQuery(selectAll,null)
+        if(cursor.count==0){
+            cursor.close()
+            rd.close()
+            return "데이터 없음"
+        }
+        // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
+        // 빨간 줄이어도 무시해주도록 합시당
+        while(cursor.moveToNext()){
+            val date = cursor.getString(cursor.getColumnIndex("date"))
+            val down = cursor.getString(cursor.getColumnIndex("down"))
+            val up = cursor.getString(cursor.getColumnIndex("up"))
+
+            list.add(DataSleepTime(date,down, up))
+        }
+        cursor.close()
+        rd.close()
+
+        return list.get(0).down
+    }
+
+    fun updateTodo(id: Int, memo: String) {
+        var wd: SQLiteDatabase = writableDatabase
+        wd.execSQL(
+            "UPDATE todo SET todo = '$memo' where id = $id"
+        )
+        wd.close()
+
+    }
+    fun getUpDownDate(date: String):Boolean{
+        Log.e("abcd", "띠용?")
+        val list = mutableListOf<DataSleepTime>()
+        //전체조회
+        val selectAll = "select * from sleep_time where date ='"+date+"'"
+
+        //읽기전용 데이터베이스 변수
+        val rd = readableDatabase
+        //데이터를 받아 줍니다.
+        val cursor = rd.rawQuery(selectAll,null)
+        if(cursor.count==0){
+            cursor.close()
+            rd.close()
+            return true
+        }
+        // 반복문을 사용하여 list 에 데이터를 넘겨 줍니당
+        // 빨간 줄이어도 무시해주도록 합시당
+        while(cursor.moveToNext()){
+            val date = cursor.getString(cursor.getColumnIndex("date"))
+            val down = cursor.getString(cursor.getColumnIndex("down"))
+            val up = cursor.getString(cursor.getColumnIndex("up"))
+
+            list.add(DataSleepTime(date,down, up))
+        }
+        cursor.close()
+        rd.close()
+
+        return false
     }
 }

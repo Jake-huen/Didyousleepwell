@@ -19,7 +19,8 @@
             android:textAlignment="center"
             android:textSize="22sp"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:fontFamily="@font/ef_diary"/>
         <EditText
             android:id="@+id/editTextAge"
             android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
             android:layout_marginBottom="30dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"/>
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/ef_diary"/>
 
 
         <TextView
@@ -45,7 +47,8 @@
             android:textSize="22sp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="30dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:fontFamily="@font/ef_diary"/>
         <EditText
             android:id="@+id/editTextDate"
             android:layout_width="wrap_content"
@@ -60,7 +63,8 @@
             android:layout_marginBottom="30dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"/>
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/ef_diary"/>
 
 
         <Button
@@ -69,6 +73,7 @@
             android:layout_height="wrap_content"
             android:text="자러가기"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#BA90FD"/>
+            android:backgroundTint="#BA90FD"
+            android:fontFamily="@font/ef_diary"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

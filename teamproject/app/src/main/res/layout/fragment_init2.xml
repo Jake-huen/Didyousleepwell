@@ -11,14 +11,26 @@
         android:id="@+id/titleaa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="권한 정보 다 주셨나요?\n(나중에 권한 없으면 페이지 지움)"
+        android:text="원활한 앱 사용을 위해 권한 정보가\n 꼭 필요해요! 권한을 허용해주세요."
         android:textSize="22sp"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_permission"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:fontFamily="@font/ef_diary"/>
+
+    <Button
+        android:id="@+id/btn_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/titleaa"
+        android:text="권한 허용"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/ef_diary"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

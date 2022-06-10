@@ -4,19 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodoFragment">
+    tools:context=".TodoFragment"
+    android:background="#D5D0DD">
+    <View
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/analysisTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="오늘의 잠 분석"
         android:layout_gravity="center"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:fontFamily="@font/ef_diary"/>
 
     <TableLayout
         android:id="@+id/analysisTable"
@@ -29,29 +35,6 @@
 
         <TableRow>
             <TextView
-                android:text="기상 시간"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                />
-            <!--분석에 맞는 얼굴 표시-->
-            <TextView
-                android:text="00시 00분"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                />
-        </TableRow>
-
-        <TableRow>
-            <TextView
                 android:text="취침 시간"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -59,10 +42,11 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
-            <!--            분석에 맞는 얼굴 표시-->
             <TextView
+                android:id="@+id/textView1"
                 android:text="00시 00분"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -70,6 +54,32 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/ef_diary"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="기상 시간"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
+                />
+            <TextView
+                android:id="@+id/textView2"
+                android:text="00시 00분"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/ef_diary"
                 />
         </TableRow>
         <TableRow>
@@ -81,10 +91,11 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
-            <!--            분석에 맞는 얼굴 표시-->
             <TextView
+                android:id="@+id/textView3"
                 android:text="00시간 00분"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -92,6 +103,7 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/ef_diary"
                 />
         </TableRow>
         <TableRow>
@@ -103,10 +115,12 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
 
             <TextView
+                android:id="@+id/textView4"
                 android:text="00시간 00분"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -114,18 +128,20 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/ef_diary"
                 />
         </TableRow>
         <TableRow>
             <TextView
-                android:text="상        태"
+                android:text="상      태"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/ef_diary"
                 />
             <!--분석에 맞는 얼굴 표시-->
             <ImageView
@@ -133,9 +149,10 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="2"
-                android:src="@drawable/ic_baseline_face_24"
+                android:src="@drawable/three"
                 android:gravity="center"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                />
         </TableRow>
     </TableLayout>
 

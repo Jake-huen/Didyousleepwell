@@ -5,24 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecommendupActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:fontFamily="@font/ef_diary">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="잘 시간을 알려주세요"
+        android:text="언제 잘래요..?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="70dp"
         android:textColor="@color/white"
-        android:background="#66000000"
         android:textSize="20sp"
         android:width="220dp"
         android:height="50dp"
         android:textAlignment="center"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="@font/ef_diary"
+        android:textStyle="bold"/>
     <TimePicker
         android:id="@+id/recommendup_timePicker"
         android:layout_width="wrap_content"
@@ -45,7 +47,8 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/black"
         app:strokeColor="#FFFFFF"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"
+        android:fontFamily="@font/ef_diary"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
